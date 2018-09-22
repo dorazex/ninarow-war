@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/GameEngine/GameEngine.iml" filepath="$PROJECT_DIR$/GameEngine/GameEngine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XmlLoader/XmlLoader.iml" filepath="$PROJECT_DIR$/XmlLoader/XmlLoader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ninarow-war.iml" filepath="$PROJECT_DIR$/ninarow-war.iml" />
+    </modules>
+  </component>
+</project>

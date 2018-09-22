@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="ninarow-war:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ninarow_war_war_exploded</output-path>
+    <root id="archive" name="ninarow-war_war exploded.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ninarow-war" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="ninarow-war/web/Web" />
+    </root>
+  </artifact>
+</component>

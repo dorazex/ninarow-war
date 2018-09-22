@@ -1,0 +1,41 @@
+/*.text-center {*/
+  /*text-align: center;*/
+/*}*/
+
+button {
+  margin: 1px 2px 5px 2px !important;
+}
+
+.table-no-border>thead>tr>th,
+.table-no-border>tbody>tr>th,
+.table-no-border>tfoot>tr>th,
+.table-no-border>thead>tr>td,
+.table-no-border>tbody>tr>td,
+.table-no-border>tfoot>tr>td,
+.table-no-border>tbody,
+.table-no-border>thead,
+.table-no-border>tfoot {
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #00C851;
+  color: white;
+}
+
+#sidePanel {
+  max-width: 243px;
+}
+
+
+/*#footer {*/
+    /*position:fixed;*/
+    /*left:0px;*/
+    /*bottom:0px;*/
+    /*height:30px;*/
+    /*width:100%;*/
+    /*background:#999;*/
+/*}*/
+

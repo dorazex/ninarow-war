@@ -1,0 +1,42 @@
+
+.toggler.selected{
+    border: 1px solid red;
+}
+
+.toggler {
+    border: 1px solid white;
+}
+
+.block{
+    width: 24px;
+    height: 24px;
+    max-width:24px;
+    min-width:24px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #efefef;
+}
+
+.board {
+    border-collapse: separate;
+    display:block;
+    overflow:auto;
+    table-layout:fixed;
+    max-width: 100%;
+}
+
+.unknown{
+    background-color:  gray;
+}
+
+.empty{
+    background-color:  white;
+}
+
+.filled{
+    background-color:  black;
+}
+
+.block.perfected {
+    background-color:  red;
+}

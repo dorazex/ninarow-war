@@ -1,0 +1,165 @@
+<html>
+<head>
+    <title>Nonogram</title>
+    <meta charset="utf-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="css/mdb.min.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css">
+    <link rel="stylesheet" href="css/common-style.css">
+    <link rel="stylesheet" href="css/board-style.css">
+    <link rel="stylesheet" href="css/boardPage.css">
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+<!--Navbar-->
+<nav class="navbar elegant-color">
+    <div class="container">
+        <div class="navbar-header">
+            <!--Navbar Brand-->
+            <a class="navbar-brand" href="#"><p><strong>Nonogram</strong></p></a>
+        </div>
+        <!--Links-->
+        <div>
+            <ul class="nav navbar-nav navbar-right pull-right">
+                <li class="active">
+                    <a href="#" id="leaveRoom" class="pull-right navbar-nav">Leave room</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--Navbar-->
+<div id="wrap">
+    <div class="container " id="main">
+        <div class="row">
+            <div class="container">
+                <div class="row" id="playerDetails">
+                    <div class="col-xs-9">
+                        <table class="table table-no-border">
+                            <tbody>
+                            <tr>
+                                <td id="moves">Moves: 0/2</td>
+                                <td id="rounds">Rounds: 0/0</td>
+                                <td id="username">Username:</td>
+                                <td id="currPlayer">Current GameEngine.Player:</td>
+                                <td id="roomid">Room ID:</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-9" id="boardArea">
+                        <table id="board"></table>
+                    </div>
+                    <div class="col-xs-3" id="sidePanel">
+                        <div class="row ">
+                            <div class="col-xs-12">
+                                <div id="controlPanel">
+                                    <div class="col-xs-12  text-center" id="mainControl">
+                                        <button href="#" class="btn btn-default btn-sm waves-effect waves-light"
+                                                id="filled">Mark
+                                        </button>
+                                        <button href="#" class="btn btn-default btn-sm waves-effect waves-light"
+                                                id="empty">
+                                            Clear
+                                        </button>
+                                        <button href="#" class="btn btn-default btn-sm waves-effect waves-light"
+                                                id="unknown">Unknown
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-12 text-center">
+                                        <button href="#" class="btn btn-default btn-sm waves-effect waves-light"
+                                                id="undo">Undo
+                                        </button>
+                                        <button href="#" class="btn btn-default btn-sm waves-effect waves-light"
+                                                id="redo">redo
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-12 text-center">
+                                        <div class="btn-group">
+                                            <button href="#" class="btn btn-default btn-sm waves-effect waves-light"
+                                                    id="turnDone">Turn Done
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="col-xs-12 text-center">
+                                        <div class="btn-group">
+                                            <button style="visibility:hidden" href="#"
+                                                    class="btn btn-default btn-sm waves-effect waves-light"
+                                                    id="previous">Prev
+                                            </button>
+                                            <button href="#" class="btn btn-default btn-sm waves-effect waves-light"
+                                                    id="replay">Replay
+                                            </button>
+                                            <button style="visibility:hidden" href="#"
+                                                    class="btn btn-default btn-sm waves-effect waves-light"
+                                                    id="next">Next
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3 class="text-center">Players</h3>
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Name</th>
+                                        <th>Score</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="userslist"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer-->
+<footer class="footer elegant-color-dark" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="col-xs-5">
+                    <p class="text-muted">By Sela Oren and Moran Mahabi 2016</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--footer end-->
+<!-- The Modal -->
+<div class="modal fade" id="messageModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="modalTitle">Nonogram</h4>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">message</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- The Modal end-->
+<script src="script/jquery-3.1.1.min.js"></script>
+<script src="script/bootstrap.min.js"></script>
+<script src="script/mdb.min.js"></script>
+<script src="script/js.cookie.js"></script>
+<script src="script/common.js"></script>
+<script src="script/boardPage.js"></script>
+</body>
+</html>

@@ -205,10 +205,6 @@ public class GameManager {
         return gameRunningProperty;
     }
 
-    public void setRounds(int moves) {
-        roomInfo.setRounds(moves);
-    }
-
     public List<PlayerManager> getPlayers() {
         return players;
     }
@@ -226,13 +222,6 @@ public class GameManager {
         }
 
         currentPlayer = players.get(indexOfCurrentPlayer);
-
-        if (currentRound > roomInfo.getRounds()) {
-            currentRound--;
-            //gameRunningProperty.setValue(false);
-            isGameOver = true;
-            systemMessage  = "Game over. Ran out of rounds.";
-        }
 
         playAutoMoves(); // will play only if computer
     }

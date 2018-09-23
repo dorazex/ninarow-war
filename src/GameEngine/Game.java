@@ -151,7 +151,7 @@ public class Game {
         roomInfo.setTotalPlayers(totalPlayers);
     }
 
-    public boolean getGameRunning() {
+    public Boolean getGameRunning() {
         return isStarted;
     }
 
@@ -181,6 +181,30 @@ public class Game {
         currentPlayerIndex = 0;
         roomInfo.clearInfo();
     }
+
+
+    public Integer getTurnsCountOfUser(String username){
+        return this.getPlayer(username).getTurnsCount();
+    }
+
+    public void onePlayerReady(){
+        if (isStarted && this.getCurrentPlayer().getClass().getSimpleName().equals(PlayerManager.PlayerType.Computer.toString())
+                && !this.onePlayerReady){
+//            playAutoMoves();    // start the game in case first player is computer
+        }
+        this.onePlayerReady = true; //so the above will happen only once
+    }
+
+    public GameDetails getGameDetails(String username) {
+        return new GameDetails(this, username);
+    }
+
+
+
+
+
+
+
 
 
 
@@ -236,6 +260,10 @@ public class Game {
         this.duration = new SimpleStringProperty();
         this.duration.set("00:00");
         this.variant = variant;
+        this.players = new ArrayList<>();
+        this.roomInfo.setColumns(this.board.getColumns());
+        this.roomInfo.setRows(this.board.getRows());
+
     }
 
     public Game(int target, Board board){

@@ -147,19 +147,17 @@ public class RoomsServlet extends HttpServlet {
 
     private void handleXMLFile(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Part file = request.getPart("XMLFile");
-        Game game = new Game();
         try {
             HashMap<String, Object> parametersMap = XmlLoader.getGameInitParameters(file.getInputStream());
-//
-//            TODO: use these params
-//            String variant = (String)parametersMap.get("variant");
-//            Integer target = (Integer)parametersMap.get("target");
-//
-//
-            game.setGameTitle((String)parametersMap.get("game-title"));
+
+            String variant = (String)parametersMap.get("variant");
+            Integer target = (Integer)parametersMap.get("target");
+            Integer rows = (Integer)parametersMap.get("rows");
+            Integer columns = (Integer)parametersMap.get("columns");
+            Game game = new Game(target, rows, columns, variant);
             game.setTotalPlayers((Integer)parametersMap.get("total-players"));
-            game.setBoard(new Board((Integer)parametersMap.get("rows"),(Integer)parametersMap.get("columns")));
             game.setOrganizer(request.getParameter("organizer"));    // set the organizer of the room
+            game.setGameTitle((String)parametersMap.get("game-title"));
             ServletUtils.getRoomsManager(getServletContext()).addGame(game);
         } catch (Exception e) {
             response.getWriter().write(e.getMessage());

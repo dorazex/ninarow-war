@@ -15,7 +15,8 @@ class RoomInfo {
     private int totalPlayers;
     private int onlinePlayers = 0;
     private int rounds;
-    private Pair<Integer, Integer> boardSize;
+    private int rows;
+    private int columns;
 
     void addSpectator() { spectators++; }
 
@@ -74,8 +75,12 @@ class RoomInfo {
         this.rounds = rounds;
     }
 
-    void setBoardSize(Pair<Integer, Integer> boardSize) {
-        this.boardSize = boardSize;
+    public void setRows(Integer rows) {
+        this.rows = rows;
+    }
+
+    public void setColumns(Integer columns) {
+        this.columns = columns;
     }
 
     void decreaseOnlinePlayers() {

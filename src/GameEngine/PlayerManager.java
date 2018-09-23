@@ -1,8 +1,6 @@
 package GameEngine;
 
 
-import java.util.LinkedList;
-
 /**
  * Created by moran on 03/08/2016.
  */
@@ -16,7 +14,7 @@ public class PlayerManager {
 
     private final String name;
     private final PlayerType playerType;
-    private int numOfAllMoves = 0;
+    private int turnsCount = 0;
     private Board board; //TODO : copy
 
 
@@ -28,7 +26,7 @@ public class PlayerManager {
 
     //region getters
 
-    int getNumOfAllMoves() { return  numOfAllMoves;}
+    int getTurnsCount() { return turnsCount;}
 
     public final String getName() {
         return  name;
@@ -53,7 +51,7 @@ public class PlayerManager {
     boolean doMove(Integer column, Boolean isPopOut) {
         boolean retValue = false;
 //        board.putDisc(this, column);
-        numOfAllMoves++;
+        turnsCount++;
         return  retValue;
     }
 

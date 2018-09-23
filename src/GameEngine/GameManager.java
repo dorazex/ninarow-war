@@ -18,9 +18,7 @@ public class GameManager {
 
         private boolean isActivePlayer = false;
         private String currentPlayerName;
-        private int totalRounds;
-        private int currentRound;
-        private int numOfTurns; //relevant only to current player
+        private int turnsCount; //relevant only to current player
         private List<PlayerManager> playerList; //player type, name, score of player
         private boolean isGameOver;
 
@@ -30,14 +28,11 @@ public class GameManager {
                 isActivePlayer = true;
             }
 
-            totalRounds = roomInfo.getRounds();
-            currentRound = gameManager.currentRound;
-            numOfTurns = numOfOperationsInTurn;
+            turnsCount = gameManager.currentPlayer.getTurnsCount();
             currentPlayerName = gameManager.currentPlayer.getName();
-            //amountOfMoves = currentPlayer.getValue().getHistoryMoves().size(); //TODO this is a little stupid, you don't need this when not in your turn and it wasnt in ex2
             playerList = gameManager.makePlayerAndSpectatorList();
 
-            isGameOver = gameManager.gameOver;
+            isGameOver = gameManager.isGameOver;
         }
     }
 
@@ -47,17 +42,15 @@ public class GameManager {
     private PlayerManager currentPlayer;
 
     private Integer currentRound = 0;
-    private Integer numOfOperationsInTurn = 0;
 
     private List<PlayerManager> players = new ArrayList<>();
     private int indexOfCurrentPlayer;
 
     // ex3 data
     private final RoomInfo roomInfo = new RoomInfo();
-    private Board prototypeBoard;
-    private List<String> spectators = new LinkedList<>();
+    private Board board;
     private ExecutorService computerMoveExecutor;
-    private boolean gameOver;
+    private boolean isGameOver;
     private boolean onePlayerReady = false;
     //endregion
 
@@ -65,9 +58,9 @@ public class GameManager {
 
     public List<PlayerManager> makePlayerAndSpectatorList() {
 
-        Stream combinedStream = Stream.concat(players.stream(), spectators.stream());
+        Stream playersStream = players.stream();
 
-        return (List<PlayerManager>) combinedStream
+        return (List<PlayerManager>) playersStream
                 .map(item -> {
                         return new PlayerManager(((PlayerManager) item).getName(), getBoard(), ((PlayerManager) item).getPlayerType());
 
@@ -80,21 +73,6 @@ public class GameManager {
 //                .collect(Collectors.toList());
     }
 
-
-    public boolean addSpectator(String name){
-        boolean spectatorAdded = false;
-        if(getPlayer(name) == null){    //only if he isn't already playing
-            spectators.add(name);
-            spectatorAdded = true;
-            roomInfo.addSpectator();
-        }
-        return spectatorAdded;
-    }
-
-    public void removeSpectator(String name){
-        roomInfo.removeSpectator();
-        spectators.removeIf(e -> Objects.equals(e, name));
-    }
 
     public synchronized void removePlayer(String username) {  //sync to prevent race condition between two players that exit together
         if(!gameRunningProperty){
@@ -109,7 +87,7 @@ public class GameManager {
                 }
                 removePlayerFromList(username);
                 if (players.size() == 1) {
-                    gameOver = true;
+                    isGameOver = true;
                     systemMessage = String.format("Game over. only %1s left.", currentPlayer.getName());
                 }
             }
@@ -134,7 +112,7 @@ public class GameManager {
     }
 
     public synchronized boolean addPlayer(String organizer, PlayerManager.PlayerType playerType) {
-        PlayerManager player = new PlayerManager(organizer, prototypeBoard, playerType);
+        PlayerManager player = new PlayerManager(organizer, board, playerType);
 
         if(roomInfo.getOnlinePlayers() < roomInfo.getTotalPlayers() && !gameRunningProperty){
             players.add(player);
@@ -144,7 +122,7 @@ public class GameManager {
             }
             if(roomInfo.getOnlinePlayers() == roomInfo.getTotalPlayers()){
                 gameRunningProperty = true;
-                gameOver = false;
+                isGameOver = false;
                 currentRound = 1;
             }
 
@@ -175,19 +153,15 @@ public class GameManager {
     }
 
     public int getNmOfAllMoves(String nameOfPlayer) {
-        return getPlayer(nameOfPlayer).getNumOfAllMoves();
+        return getPlayer(nameOfPlayer).getTurnsCount();
     }
 
-    void setComputerMoveExecutor(ExecutorService computerMoveExecutor) {
+    public void setComputerMoveExecutor(ExecutorService computerMoveExecutor) {
         this.computerMoveExecutor = computerMoveExecutor;
     }
 
     public Board getCurrentPlayerBoard() {
         return currentPlayer.getBoard();
-    }
-
-    public Board getPrototypeBoard() {
-        return prototypeBoard;
     }
 
     public String getSystemMessage() { return systemMessage;}
@@ -211,18 +185,19 @@ public class GameManager {
         roomInfo.setOrganizer(organizer);
     }
 
-    void setPrototypeBoard(Board board){
-        prototypeBoard = board;
-        roomInfo.setBoardSize(new Pair<Integer, Integer>(board.getRows(), board.getColumns()));
+    public void setBoard(Board board){
+        this.board = board;
+        roomInfo.setRows(board.getRows());
+        roomInfo.setColumns(board.getColumns());
     }
 
-    public Board getBoard () { return prototypeBoard ;}
+    public Board getBoard () { return board;}
 
-    void setGameTitle(String gameTitle) {
+    public void setGameTitle(String gameTitle) {
         roomInfo.setGameTitle(gameTitle);
     }
 
-    void setTotalPlayers(int totalPlayers) {
+    public void setTotalPlayers(int totalPlayers) {
         roomInfo.setTotalPlayers(totalPlayers);
     }
 
@@ -230,7 +205,7 @@ public class GameManager {
         return gameRunningProperty;
     }
 
-    void setRounds(int moves) {
+    public void setRounds(int moves) {
         roomInfo.setRounds(moves);
     }
 
@@ -244,7 +219,6 @@ public class GameManager {
 
     public synchronized void setNextPlayer() {  //synced in case one player exits at the same time as another pressing turn done
 
-        numOfOperationsInTurn = 0;
         indexOfCurrentPlayer++;
         if (indexOfCurrentPlayer >= players.size()) {
             indexOfCurrentPlayer = 0;
@@ -256,7 +230,7 @@ public class GameManager {
         if (currentRound > roomInfo.getRounds()) {
             currentRound--;
             //gameRunningProperty.setValue(false);
-            gameOver = true;
+            isGameOver = true;
             systemMessage  = "Game over. Ran out of rounds.";
         }
 
@@ -268,22 +242,14 @@ public class GameManager {
     //region main game controls
 
     public boolean doMove(Integer column, Boolean isPopOut) {
-        if(numOfOperationsInTurn >= 2){
-            return false;   //can get here if polling to disable the buttons is delayed
-                            //so need to notify client that do move didn't succeed
+
+        boolean isPlayerWin = currentPlayer.doMove(column, isPopOut);
+
+        if (isPlayerWin) {
+            //gameRunningProperty.setValue(false);
+            isGameOver = true;
+            systemMessage = String.format("Game over. %1s won.", currentPlayer.getName());
         }
-
-//        boolean isPlayerWin = currentPlayer.doMove(moves);
-
-        if (numOfOperationsInTurn < 0)
-            numOfOperationsInTurn = 1;
-        else numOfOperationsInTurn++;
-
-//        if (isPlayerWin) {
-//            //gameRunningProperty.setValue(false);
-//            gameOver = true;
-//            systemMessage = String.format("Game over. %1s won.", currentPlayer.getName());
-//        }
 
         return true;
     }
@@ -294,13 +260,9 @@ public class GameManager {
     }
 
     private void playAutoMoves(){
-        if(currentPlayer.getPlayerType() == PlayerManager.PlayerType.Computer && gameRunningProperty && !gameOver){
+        if(currentPlayer.getPlayerType() == PlayerManager.PlayerType.Computer && gameRunningProperty && !isGameOver){
             computerMoveExecutor.execute(() -> {
-                Integer maxOperationsInTurn = 2;
-                while(numOfOperationsInTurn < maxOperationsInTurn){
-                    currentPlayer.runComputerPlayerMove();
-                    numOfOperationsInTurn++;
-                }
+                currentPlayer.runComputerPlayerMove();
                 setNextPlayer();
             });
         }
@@ -308,7 +270,7 @@ public class GameManager {
 
     private void resetGame() {
         gameRunningProperty = false;
-        gameOver = false;
+        isGameOver = false;
         onePlayerReady = false;
         systemMessage = null;
         currentPlayer = null;
@@ -316,9 +278,7 @@ public class GameManager {
         if(players != null) {
             players.clear();
         }
-        spectators.clear();
         indexOfCurrentPlayer = 0;
-        numOfOperationsInTurn = 0;
         roomInfo.clearInfo();
     }
 }

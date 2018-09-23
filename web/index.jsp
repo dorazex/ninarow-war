@@ -21,7 +21,7 @@
 <div id="wrap">
     <div align="center" class="text-center container" id="main" style="padding:50px 0;">
         <div class="logo">Nonogram Login</div>
-        <!-- GameEngine.Main Form -->
+        <!-- Main Form -->
         <div class="login-form-1">
             <form method="GET" action="login">
                 <div class="main-login-form">
@@ -45,7 +45,7 @@
                 </div>
             </form>
         </div>
-        <!-- end:GameEngine.Main Form -->
+        <!-- end:Main Form -->
     </div>
     <div class="row">
         <div class="alert alert-danger col-md-4 col-md-offset-4" align="center">

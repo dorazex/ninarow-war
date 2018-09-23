@@ -78,20 +78,7 @@ public class RoomsServlet extends HttpServlet {
         Map<String, String> result = new HashMap<>();
 
         if(gameManager.getGameRunning()){
-            if(gameManager.addSpectator(request.getParameter("spectator"))){
-                result.put("redirect", "boardPage.html");
-
-                Cookie roomIdCookie = new Cookie("roomid", Integer.toString(roomid));
-                roomIdCookie.setPath("/");
-                Cookie spectatorCookie = new Cookie("spectator", "true");
-                spectatorCookie.setPath("/");
-
-                response.addCookie(roomIdCookie);
-                response.addCookie(spectatorCookie);
-            }
-            else{
-                result.put("error", "You're already playing in this room");
-            }
+            result.put("error", "You're already playing in this room");
         }
         else{
             result.put("error", "Game hasn't started yet");
@@ -180,6 +167,9 @@ public class RoomsServlet extends HttpServlet {
         GameManager gameManager = new GameManager();
         try {
 //            xmlReader.loadXML(file.getInputStream(), gameManager, ServletUtils.getRoomsManager(getServletContext()));
+            gameManager.setGameTitle("Game#1");
+            gameManager.setTotalPlayers(2);
+            gameManager.setBoard(new Board(4,4));
             gameManager.setOrganizer(request.getParameter("organizer"));    // set the organizer of the room
             ServletUtils.getRoomsManager(getServletContext()).addGameManager(gameManager);
         } catch (Exception e) {

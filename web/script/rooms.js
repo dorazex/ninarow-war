@@ -33,7 +33,7 @@
                 '<td>' + element.onlinePlayers + "/" + element.totalPlayers + '</td>' +
                 '<td>' + '<i class="fa fa-eye" aria-hidden="true">' + element.spectators + '</i>' + '</td>' +
                 '<td>' + element.rounds + '</td>' +
-                '<td>' + element.boardSize.key + "X" + element.boardSize.value + '</td>' +
+                '<td>' + element.rows + "X" + element.columns + '</td>' +
                 '</tr>').appendTo($("#roomslist"));
 
             if (element.roomIdentifier == selected) {

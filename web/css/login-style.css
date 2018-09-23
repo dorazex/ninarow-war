@@ -11,10 +11,10 @@ Last change	: 2015/03/27
 1. General Structure
 2. Anchor Link
 3. Text Outside the Box
-4. GameEngine.Main Form
+4. Main Form
 5. Login Button
 6. Form Invalid
-7. Form - GameEngine.Main Message
+7. Form - Main Message
 8. Custom Checkbox & Radio
 9. Misc
 -------------------------------------------------------------------*/
@@ -43,7 +43,7 @@ a:hover {
 .etc-login-form p {
     margin-bottom: 5px;
 }
-/*=== 4. GameEngine.Main Form ===*/
+/*=== 4. Main Form ===*/
 .login-form-1 {
     max-width: 300px;
     border-radius: 5px;
@@ -147,7 +147,7 @@ label.form-invalid:after {
     border-top-color: #777777;
     border-width: 6px;
 }
-/*=== 7. Form - GameEngine.Main Message ===*/
+/*=== 7. Form - Main Message ===*/
 .login-form-main-message {
     background: #ffffff;
     color: #999999;

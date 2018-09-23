@@ -2,6 +2,7 @@ package GameEngine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Board {
     private int rows;
@@ -65,7 +66,7 @@ public class Board {
         return count;
     }
 
-    private Boolean isTargetInSequence(ArrayList<Player> players, String sequence, Integer target){
+    private Boolean isTargetInSequence(List<Player> players, String sequence, Integer target){
         for (Player player: players){
             if (sequence.matches(String.format(".*%s{%d}.*", this.playersDiscTypeMap.get(player.getId()), target))) {
                 return true;
@@ -79,7 +80,7 @@ public class Board {
     }
 
 
-    public Boolean isTargetReachedRegular(ArrayList<Player> players, Integer target){
+    public Boolean isTargetReachedRegular(List<Player> players, Integer target){
         // check row
         String sequenceToCheck = "";
         for (int i = 0; i < this.rows; i++) {
@@ -122,7 +123,7 @@ public class Board {
         return false;
     }
 
-    public Boolean isTargetReachedCircular(ArrayList<Player> players, Integer target){
+    public Boolean isTargetReachedCircular(List<Player> players, Integer target){
         String sequenceToCheck = "";
         for (int i = 0; i < this.rows; i++) {
             sequenceToCheck = "";
@@ -165,7 +166,7 @@ public class Board {
         return false;
     }
 
-    public Boolean isTargetReached(ArrayList<Player> players, Integer target, String variant){
+    public Boolean isTargetReached(List<Player> players, Integer target, String variant){
         if (variant.equals("Circular")) return isTargetReachedCircular(players, target);
         return isTargetReachedRegular(players, target);
     }
@@ -174,7 +175,7 @@ public class Board {
         return this.countAvailableCells().equals(0);
     }
 
-    public void addPlayers(ArrayList<Player> players){
+    public void addPlayers(List<Player> players){
         int i = 0;
         for (Player player: players){
 //            String lastCharOfDiscType = Character.toString(player.getDiscType().charAt(player.getDiscType().length() - 1));

@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
 @WebListener
 public class RoomsManager implements ServletContextListener {
 
-    private final Map<Integer, GameManager> games = new HashMap<>();
+    private final Map<Integer, Game> games = new HashMap<>();
     private final List<SimplePlayer> onlinePlayers = new ArrayList<>();
     private final List<RoomInfo> roomList = new LinkedList<>(); //simplified game manager for converting to json
     private int count = 0;
@@ -38,18 +38,18 @@ public class RoomsManager implements ServletContextListener {
         return false;
     }
 
-    public Map<Integer, GameManager> getGames() {return games;}
+    public Map<Integer, Game> getGames() {return games;}
 
     public void addPlayer(String name, PlayerManager.PlayerType playerType) {
         onlinePlayers.add(new SimplePlayer(name, playerType));
     }
 
-    public synchronized void addGameManager(GameManager gameManager) {
+    public synchronized void addGame(Game game) {
         count++;
-        games.put(count, gameManager);
-        gameManager.setComputerMoveExecutor(computerMoveExecutor);
-        roomList.add(gameManager.getRoomInfo());
-        gameManager.getRoomInfo().setRoomIdentifier(count);
+        games.put(count, game);
+        game.setComputerMoveExecutor(computerMoveExecutor);
+        roomList.add(game.getRoomInfo());
+        game.getRoomInfo().setRoomIdentifier(count);
     }
 
     public List<SimplePlayer> getPlayerList() { return onlinePlayers;}

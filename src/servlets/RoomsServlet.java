@@ -5,12 +5,11 @@ import XmlLoader.XmlLoader;
 import com.google.gson.Gson;
 import servlets.utils.ServletUtils;
 import servlets.utils.SessionUtils;
-import com.google.gson.Gson;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -66,29 +65,11 @@ public class RoomsServlet extends HttpServlet {
             case "logout":
                 handleLogout(request, response);
                 break;
-            case "spectateRoom":
-                handleSpectateRoom(request, response);
-                break;
         }
      }
 
     //region handlers
 
-    private void handleSpectateRoom(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int roomid = Integer.parseInt(request.getParameter("roomid"));
-        GameManager gameManager = getGameManager(request);
-        Map<String, String> result = new HashMap<>();
-
-        if(gameManager.getGameRunning()){
-            result.put("error", "You're already playing in this room");
-        }
-        else{
-            result.put("error", "Game hasn't started yet");
-        }
-
-        String json = gson.toJson(result);
-        response.getWriter().write(json);
-    }
 
     private void handleLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
@@ -112,25 +93,25 @@ public class RoomsServlet extends HttpServlet {
             throws ServletException, IOException {
 
         int roomid = Integer.parseInt(request.getParameter("roomid"));
-        GameManager gameManager = getGameManager(request);
+        Game game = getGame(request);
         Map<String, String> result = new HashMap<>();
 
         String username = request.getParameter("organizer");
 
-        if(gameManager.checkUniqueUser(request.getParameter("organizer"))){
+        if(game.checkUniqueUser(request.getParameter("organizer"))){
             //user already exist, so can't register them, just let them go to their board
             result.put("error", "You're already playing in this room.");
         }
         else {
             //user doesn't exist so register them
-            if (gameManager.addPlayer(request.getParameter("organizer"), PlayerManager.PlayerType.valueOf(request.getParameter("playerType")))) {
+            if (game.addPlayer(request.getParameter("organizer"), PlayerManager.PlayerType.valueOf(request.getParameter("playerType")))) {
                 // room isn't full
                 result.put("redirect", "boardPage.html");
                 Cookie roomIdCookie = new Cookie("roomid", Integer.toString(roomid));
                 roomIdCookie.setPath("/");
                 response.addCookie(roomIdCookie); // so the client side will remember his room id after redirect
             }
-            else if(gameManager.getGameRunning()){
+            else if(game.getGameRunning()){
                 result.put("error", "Game is already running");
             }
             else {
@@ -166,7 +147,7 @@ public class RoomsServlet extends HttpServlet {
 
     private void handleXMLFile(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Part file = request.getPart("XMLFile");
-        GameManager gameManager = new GameManager();
+        Game game = new Game();
         try {
             HashMap<String, Object> parametersMap = XmlLoader.getGameInitParameters(file.getInputStream());
 //
@@ -175,11 +156,11 @@ public class RoomsServlet extends HttpServlet {
 //            Integer target = (Integer)parametersMap.get("target");
 //
 //
-            gameManager.setGameTitle((String)parametersMap.get("game-title"));
-            gameManager.setTotalPlayers((Integer)parametersMap.get("total-players"));
-            gameManager.setBoard(new Board((Integer)parametersMap.get("rows"),(Integer)parametersMap.get("columns")));
-            gameManager.setOrganizer(request.getParameter("organizer"));    // set the organizer of the room
-            ServletUtils.getRoomsManager(getServletContext()).addGameManager(gameManager);
+            game.setGameTitle((String)parametersMap.get("game-title"));
+            game.setTotalPlayers((Integer)parametersMap.get("total-players"));
+            game.setBoard(new Board((Integer)parametersMap.get("rows"),(Integer)parametersMap.get("columns")));
+            game.setOrganizer(request.getParameter("organizer"));    // set the organizer of the room
+            ServletUtils.getRoomsManager(getServletContext()).addGame(game);
         } catch (Exception e) {
             response.getWriter().write(e.getMessage());
         }
@@ -187,7 +168,7 @@ public class RoomsServlet extends HttpServlet {
 
     //endregion
 
-    private GameManager getGameManager(HttpServletRequest request){ //TODO fix this duplication
+    private Game getGame(HttpServletRequest request){ //TODO fix this duplication
 
         int roomId = Integer.parseInt(request.getParameter("roomid"));
         if(roomsManager == null){

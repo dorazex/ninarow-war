@@ -7,14 +7,42 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import sun.java2d.pipe.SpanShapeRenderer;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Game {
+
+    public class GameDetails {
+        //holds info to be sent with polling from game servlet
+        //simple object for gsoning to client
+
+        private boolean isActivePlayer = false;
+        private String currentPlayerName;
+        private int turnsCount; //relevant only to current player
+        private List<PlayerManager> playerList; //player type, name, score of player
+        private boolean isGameOver;
+
+        GameDetails(Game game, String username){
+
+            if(game.getCurrentPlayer().getName().equals(username)){
+                isActivePlayer = true;
+            }
+
+            turnsCount = game.getCurrentPlayer().getTurnsCount();
+            currentPlayerName = game.getCurrentPlayer().getName();
+            playerList = game.makePlayerAndSpectatorList();
+
+            isGameOver = game.isGameOver;
+        }
+    }
+
+
     private int target;
     private Board board;
-    private ArrayList<Player> players;
+    private List<Player> players;
     private Boolean isStarted;
     private Integer currentPlayerIndex;
     private Date startDate;
@@ -24,11 +52,141 @@ public class Game {
     private Date currentDate;
     private String variant;
 
+    private final RoomInfo roomInfo = new RoomInfo();
+    private ExecutorService computerMoveExecutor;
+    private boolean isGameOver;
+    private boolean onePlayerReady = false;
+
+    public List<PlayerManager> makePlayerAndSpectatorList() {
+
+        Stream playersStream = players.stream();
+
+        return (List<PlayerManager>) playersStream
+                .map(item -> {
+                    return new PlayerManager(((PlayerManager) item).getName(), getBoard(), ((PlayerManager) item).getPlayerType());
+
+                })
+                .collect(Collectors.toList());
+    }
+
+    private Integer getPlayerIndexOfUser(String username){
+        Integer index = -1;
+        for (Player player : this.players) {
+            index++;
+            if (player.getName().equals(username)) break;
+        }
+        return index;
+    }
+
+    public Player getPlayer(String organizer) {
+        return this.players.get(this.getPlayerIndexOfUser(organizer));
+    }
+
+    private void removePlayerFromList(String username) {
+        roomInfo.decreaseOnlinePlayers();
+        Integer indexOfUserName = this.getPlayerIndexOfUser(username);
+        if (indexOfUserName == -1){
+            throw new RuntimeException("username not found for removal");
+        }
+        this.players.remove(indexOfUserName);
+    }
+
+    public synchronized boolean addPlayer(String organizer, PlayerManager.PlayerType playerType) {
+        PlayerCommon player;
+        if (playerType == PlayerManager.PlayerType.Computer){
+            player = new PlayerComputer(this.players.size(), organizer, "C");
+        } else{
+            player = new PlayerWeb(this.players.size(), organizer, "H");
+        }
+
+        if(roomInfo.getOnlinePlayers() < roomInfo.getTotalPlayers() && !isStarted){
+            players.add(player);
+            roomInfo.increaseOnlinePlayers();
+            if(roomInfo.getOnlinePlayers() == 1){
+                this.currentPlayerIndex = 0;
+            }
+            if(roomInfo.getOnlinePlayers() == roomInfo.getTotalPlayers()){
+                isStarted = true;
+                isGameOver = false;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean checkUniqueUser(String username) { //TODO test this works
+        return players
+                .stream()
+                .filter(player -> Objects.equals(player.getName(), username))
+                .collect(Collectors.toList()).size() == 1;
+    }
+
+    public void setComputerMoveExecutor(ExecutorService computerMoveExecutor) {
+        this.computerMoveExecutor = computerMoveExecutor;
+    }
+
+    RoomInfo getRoomInfo() {
+        return roomInfo;
+    }
+
+    public void setOrganizer(String organizer) {
+        roomInfo.setOrganizer(organizer);
+    }
+
+    public void setBoard(Board board){
+        this.board = board;
+        roomInfo.setRows(board.getRows());
+        roomInfo.setColumns(board.getColumns());
+    }
+
     public int getTarget() { return target; }
+
+    public void setGameTitle(String gameTitle) {
+        roomInfo.setGameTitle(gameTitle);
+    }
+
+    public void setTotalPlayers(int totalPlayers) {
+        roomInfo.setTotalPlayers(totalPlayers);
+    }
+
+    public boolean getGameRunning() {
+        return isStarted;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    public synchronized void setNextPlayer() {  //synced in case one player exits at the same time as another pressing turn done
+
+        this.currentPlayerIndex++;
+        if (this.currentPlayerIndex >= players.size()) {
+            this.currentPlayerIndex = 0;
+        }
+
+        this.advanceToNextPlayer();
+
+//        playAutoMoves(); // will play only if computer
+    }
+
+    private void resetGame() {
+        isStarted= false;
+        isGameOver = false;
+        onePlayerReady = false;
+        if(players != null) {
+            players.clear();
+        }
+        currentPlayerIndex = 0;
+        roomInfo.clearInfo();
+    }
+
+
 
     public Board getBoard(){ return board; }
 
-    public ArrayList<Player> getPlayers() { return players; }
+    public List<Player> getPlayers() { return players; }
 
     public Boolean getIsStarted() {
         return isStarted;
@@ -59,6 +217,10 @@ public class Game {
     }
 
     public String getVariant() { return variant; }
+
+    public Player getCurrentPlayer(){
+        return this.players.get(this.currentPlayerIndex);
+    }
 
     public Game(){};
 
@@ -103,7 +265,9 @@ public class Game {
     }
 
     public Boolean isEndWithWinner(){
-        return this.board.isTargetReached(players, this.target, this.variant);
+        Boolean isTargetReached = this.board.isTargetReached(players, this.target, this.variant);
+        this.isGameOver = isTargetReached;
+        return isTargetReached;
     }
 
     public void start(ArrayList<Player> players){
@@ -120,6 +284,7 @@ public class Game {
         this.history.pushTurn(turnRecord);
         if (this.isEndWithWinner()){
             this.winnerPlayer = this.players.get(this.currentPlayerIndex);
+            this.isGameOver = true;
             return true;
         }
         this.advanceToNextPlayer();

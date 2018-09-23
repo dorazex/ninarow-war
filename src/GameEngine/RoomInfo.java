@@ -8,25 +8,16 @@ import com.google.gson.internal.Pair;
 class RoomInfo {
     //simplified game manager info for converting to json
 
-    private int spectators = 0;
     private int roomIdentifier;
     private String organizer;
     private String gameTitle;
     private int totalPlayers;
     private int onlinePlayers = 0;
-    private int rounds;
     private int rows;
     private int columns;
 
-    void addSpectator() { spectators++; }
-
-    void removeSpectator() {
-        spectators--;
-    }
-
     void clearInfo() {
         onlinePlayers = 0;
-        spectators = 0;
     }
 
     void setRoomIdentifier(int roomIdentifier) { this.roomIdentifier = roomIdentifier;}
@@ -65,14 +56,6 @@ class RoomInfo {
 
     void increaseOnlinePlayers() {
         this.onlinePlayers++;
-    }
-
-    int getRounds() {
-        return rounds;
-    }
-
-    void setRounds(int rounds) {
-        this.rounds = rounds;
     }
 
     public void setRows(Integer rows) {

@@ -12,24 +12,25 @@ import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class XmlLoader {
 
-    public static HashMap<String, Object> getGameInitParameters(String filePath) throws ConfigXmlException {
+    public static HashMap<String, Object> getGameInitParameters(InputStream is) throws ConfigXmlException {
 
-        if (!filePath.toLowerCase().endsWith(".xml")) throw new ConfigXmlException("File is not an XML file");
+//        if (!filePath.toLowerCase().endsWith(".xml")) throw new ConfigXmlException("File is not an XML file");
 
         HashMap<String, Object> parametersMap = new HashMap<>();
         try {
 
-            File fXmlFile = new File(filePath);
-            if (!fXmlFile.exists()) throw new ConfigXmlException("File does not exist");
+//            File fXmlFile = new File(filePath);
+//            if (!fXmlFile.exists()) throw new ConfigXmlException("File does not exist");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
+            Document doc = dBuilder.parse(is);
             doc.getDocumentElement().normalize();
 
             // GameType

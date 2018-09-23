@@ -1,6 +1,7 @@
 package servlets;
 
 import GameEngine.*;
+import XmlLoader.XmlLoader;
 import com.google.gson.Gson;
 import servlets.utils.ServletUtils;
 import servlets.utils.SessionUtils;
@@ -9,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -166,10 +168,16 @@ public class RoomsServlet extends HttpServlet {
         Part file = request.getPart("XMLFile");
         GameManager gameManager = new GameManager();
         try {
-//            xmlReader.loadXML(file.getInputStream(), gameManager, ServletUtils.getRoomsManager(getServletContext()));
-            gameManager.setGameTitle("Game#1");
-            gameManager.setTotalPlayers(2);
-            gameManager.setBoard(new Board(4,4));
+            HashMap<String, Object> parametersMap = XmlLoader.getGameInitParameters(file.getInputStream());
+//
+//            TODO: use these params
+//            String variant = (String)parametersMap.get("variant");
+//            Integer target = (Integer)parametersMap.get("target");
+//
+//
+            gameManager.setGameTitle((String)parametersMap.get("game-title"));
+            gameManager.setTotalPlayers((Integer)parametersMap.get("total-players"));
+            gameManager.setBoard(new Board((Integer)parametersMap.get("rows"),(Integer)parametersMap.get("columns")));
             gameManager.setOrganizer(request.getParameter("organizer"));    // set the organizer of the room
             ServletUtils.getRoomsManager(getServletContext()).addGameManager(gameManager);
         } catch (Exception e) {

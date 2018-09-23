@@ -31,8 +31,6 @@
                 '<td>' + element.gameTitle + '</td>' +
                 '<td>' + element.organizer + '</td>' +
                 '<td>' + element.onlinePlayers + "/" + element.totalPlayers + '</td>' +
-                '<td>' + '<i class="fa fa-eye" aria-hidden="true">' + element.spectators + '</i>' + '</td>' +
-                '<td>' + element.rounds + '</td>' +
                 '<td>' + element.rows + "X" + element.columns + '</td>' +
                 '</tr>').appendTo($("#roomslist"));
 

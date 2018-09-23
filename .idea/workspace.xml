@@ -7,24 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32da28f5-b461-4b69-95e5-e69c2628b2ba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ninarow_war_war_exploded/ninarow-war_war exploded.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ninarow_war_war_exploded/ninarow-war_war exploded.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ninarow-war/GameEngine/GameManager$GameDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ninarow-war/GameEngine/GameManager$GameDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ninarow-war/GameEngine/GameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ninarow-war/GameEngine/GameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ninarow-war/GameEngine/PlayerManager$PlayerType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ninarow-war/GameEngine/PlayerManager$PlayerType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ninarow-war/GameEngine/PlayerManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ninarow-war/GameEngine/PlayerManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ninarow-war/GameEngine/RoomInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ninarow-war/GameEngine/RoomInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ninarow-war/XmlLoader/XmlLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ninarow-war/XmlLoader/XmlLoader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ninarow-war/servlets/RoomsServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ninarow-war/servlets/RoomsServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameEngine/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEngine/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameEngine/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEngine/PlayerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameEngine/RoomInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEngine/RoomInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/XmlLoader/XmlLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/XmlLoader/XmlLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlets/RoomsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlets/RoomsServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/boardPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/boardPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/login-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/login-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/rooms.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/rooms.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/script/rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/script/rooms.js" afterDir="false" />
     </list>
@@ -130,8 +112,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/script/rooms.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+            <state relative-caret-position="114">
+              <caret line="32" column="87" selection-start-line="32" selection-start-column="87" selection-end-line="32" selection-end-column="87" />
             </state>
           </provider>
         </entry>
@@ -139,8 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/rooms.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2603">
-              <caret line="137" column="39" selection-start-line="137" selection-start-column="39" selection-end-line="137" selection-end-column="39" />
+            <state relative-caret-position="197">
+              <caret line="73" column="40" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="40" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#label#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -160,8 +142,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameEngine/GameManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3363">
-              <caret line="187" column="20" selection-start-line="187" selection-start-column="20" selection-end-line="187" selection-end-column="20" />
+            <state relative-caret-position="2090">
+              <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -205,7 +187,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>columnsBlocks</find>
       <find>runComputerPlayerMove</find>
       <find>prototypeBoard</find>
       <find>PlayerType.valueOf</find>
@@ -235,6 +216,7 @@
       <find>board</find>
       <find>getb</find>
       <find>boardsize.k</find>
+      <find>spectat</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -253,7 +235,6 @@
         <option value="$PROJECT_DIR$/src/GameEngine/Board.java" />
         <option value="$PROJECT_DIR$/src/servlets/LoginServlet.java" />
         <option value="$PROJECT_DIR$/web/boardPage.html" />
-        <option value="$PROJECT_DIR$/web/rooms.html" />
         <option value="$PROJECT_DIR$/web/index.html" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/css/login-style.css" />
@@ -262,6 +243,7 @@
         <option value="$PROJECT_DIR$/src/servlets/RoomsServlet.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/GameManager.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/RoomInfo.java" />
+        <option value="$PROJECT_DIR$/web/rooms.html" />
         <option value="$PROJECT_DIR$/web/script/rooms.js" />
       </list>
     </option>
@@ -536,18 +518,18 @@
       <updated>1537538997674</updated>
       <workItem from="1537539005353" duration="19707000" />
       <workItem from="1537688041551" duration="7814000" />
-      <workItem from="1537703371269" duration="1447000" />
+      <workItem from="1537703371269" duration="1611000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28968000" />
+    <option name="totallyTimeSpent" value="29132000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1665" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2100608" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2100608" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -557,7 +539,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3294979" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33054394" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33054394" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39958158" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -861,30 +843,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/rooms.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2603">
-          <caret line="137" column="39" selection-start-line="137" selection-start-column="39" selection-end-line="137" selection-end-column="39" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#label#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GameEngine/PlayerManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameEngine/GameManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3363">
-          <caret line="187" column="20" selection-start-line="187" selection-start-column="20" selection-end-line="187" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -909,10 +871,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameEngine/GameManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2090">
+          <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/rooms.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="73" column="40" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="40" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#label#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/script/rooms.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+        <state relative-caret-position="114">
+          <caret line="32" column="87" selection-start-line="32" selection-start-column="87" selection-end-line="32" selection-end-column="87" />
         </state>
       </provider>
     </entry>

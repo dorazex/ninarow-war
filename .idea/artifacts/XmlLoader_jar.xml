@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="XmlLoader:jar">
+  <artifact type="jar" name="XmlLoader:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/XmlLoader_jar</output-path>
     <root id="archive" name="XmlLoader.jar">
       <element id="module-output" name="XmlLoader" />

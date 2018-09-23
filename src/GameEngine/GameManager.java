@@ -273,17 +273,17 @@ public class GameManager {
                             //so need to notify client that do move didn't succeed
         }
 
-        boolean isPlayerWin = currentPlayer.doMove(column, isPopOut);
+//        boolean isPlayerWin = currentPlayer.doMove(moves);
 
         if (numOfOperationsInTurn < 0)
             numOfOperationsInTurn = 1;
         else numOfOperationsInTurn++;
 
-        if (isPlayerWin) {
-            //gameRunningProperty.setValue(false);
-            gameOver = true;
-            systemMessage = String.format("Game over. %1s won.", currentPlayer.getName());
-        }
+//        if (isPlayerWin) {
+//            //gameRunningProperty.setValue(false);
+//            gameOver = true;
+//            systemMessage = String.format("Game over. %1s won.", currentPlayer.getName());
+//        }
 
         return true;
     }

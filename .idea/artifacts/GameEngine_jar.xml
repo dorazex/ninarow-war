@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="GameEngine:jar">
+  <artifact type="jar" name="GameEngine:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/GameEngine_jar</output-path>
     <root id="archive" name="GameEngine.jar">
       <element id="module-output" name="GameEngine" />

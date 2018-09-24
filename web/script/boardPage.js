@@ -59,58 +59,26 @@
             url: gameURL,
             success: function (board) {
                 updateBoard(board);
-                updatePerfectBlock(board.rowsBlocks, board.columnsBlocks);
             }
         });
     }
 
     function updateBoard(board) {
-        var theBoard = board.board;
-        var rowsBlocks = board.rowsBlocks;
+        var rowsCount = board.rowsCount;
+        var columnsCount = board.columnsCount;
+        var playersCount = board.playersCount;
+        var cells = board.cells;
+        var playersDiscTypeMap = board.playersDiscTypeMap;
         var columnsBlocks = board.columnsBlocks;
         var rows = theBoard.length;
         var columns = theBoard[0].length;
-        var maxColumnBlock = getMaxLengthOfList(columnsBlocks);
-        var maxRowBlock = getMaxLengthOfList(rowsBlocks);
 
-        for (var row = 0; row < rows; row++) {
-            for (var col = 0; col < columns; col++) {
-                $(document.getElementById("board").rows[row + maxColumnBlock].getElementsByTagName("td")[col + maxRowBlock])
+        for (var row = 0; row < rowsCount; row++) {
+            for (var col = 0; col < columnsCount; col++) {
+                $(document.getElementById("board").rows[row].getElementsByTagName("td")[col])
                     .removeClass()
                     .addClass("waves-effect waves-light toggler")
-                    .addClass(theBoard[row][col].toLowerCase());
-            }
-        }
-    }
-
-    function updatePerfectBlock(rowsBlocks, columnsBlocks) {
-        updatePerfectBlockRowsColumns(rowsBlocks, rowsBlocks.length, true, getMaxLengthOfList(columnsBlocks));
-        updatePerfectBlockRowsColumns(columnsBlocks, columnsBlocks.length, false, getMaxLengthOfList(rowsBlocks));
-    }
-
-    function updatePerfectBlockRowsColumns(blocks, heigth, isRows, offset) {
-        var maxBlock = getMaxLengthOfList(blocks);
-
-        for (var i = 0; i < heigth; i++) {
-            var x = maxBlock - 1;
-            var currentBlocks = blocks[i];
-            for (var j = currentBlocks.length - 1; j >= 0; j--) {
-                if (currentBlocks[j].value == true) {
-                    if (isRows == true) {
-                        $('#board').find('tr').eq(i + offset).find('td').eq(x--).addClass('perfected');
-                    }
-                    else {
-                        $('#board').find('tr').eq(x--).find('td').eq(i + offset).addClass('perfected');
-                    }
-                }
-                else {
-                    if (isRows == true) {
-                        $('#board').find('tr').eq(i + offset).find('td').eq(x--).removeClass('perfected');
-                    }
-                    else {
-                        $('#board').find('tr').eq(x--).find('td').eq(i + offset).removeClass('perfected');
-                    }
-                }
+                    .addClass(cells[row][col].toLowerCase());
             }
         }
     }
@@ -367,6 +335,8 @@
             $('<tr>' +
                 '<td align="center">' + createPlayerIcon(element.playerType) + '</td>' +
                 '<td>' + element.name + '</td>' +
+                '<td>' + element.turnsCount + '</td>' +
+                '<td>' + element.discType + '</td>' +
                 '</tr>').appendTo($("#userslist"));
 
         });

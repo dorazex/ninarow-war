@@ -68,7 +68,7 @@ public class Game {
             } else {
                 playerType = PlayerManager.PlayerType.Human;
             }
-            PlayerManager playerManager = new PlayerManager(player.getName(), getBoard(), playerType);
+            PlayerManager playerManager = new PlayerManager(player.getName(), getBoard(), playerType, player.getDiscType());
             playersManagers.add(playerManager);
         }
 
@@ -100,9 +100,9 @@ public class Game {
     public synchronized boolean addPlayer(String organizer, PlayerManager.PlayerType playerType) {
         PlayerCommon player;
         if (playerType == PlayerManager.PlayerType.Computer){
-            player = new PlayerComputer(this.players.size(), organizer, "C");
+            player = new PlayerComputer(this.players.size(), organizer, "red");
         } else{
-            player = new PlayerWeb(this.players.size(), organizer, "H");
+            player = new PlayerWeb(this.players.size(), organizer, "black");
         }
 
         if(roomInfo.getOnlinePlayers() < roomInfo.getTotalPlayers() && !isStarted){

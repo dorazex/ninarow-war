@@ -79,6 +79,9 @@ public class Board {
         return this.cells.get(column).get(row);
     }
 
+    public HashMap<Integer, String> getPlayersDiscTypeMap() {
+        return playersDiscTypeMap;
+    }
 
     public Boolean isTargetReachedRegular(List<Player> players, Integer target){
         // check row

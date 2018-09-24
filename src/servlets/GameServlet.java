@@ -134,7 +134,7 @@ public class GameServlet extends HttpServlet {
 
         board = game.getBoard();
 
-        SimpleBoard responseBoard = new SimpleBoard(board.getCells());
+        SimpleBoard responseBoard = new SimpleBoard(board.getCells(), board.getPlayersDiscTypeMap());
 
         String boardJson = gson.toJson(responseBoard);
         PrintWriter out = response.getWriter();

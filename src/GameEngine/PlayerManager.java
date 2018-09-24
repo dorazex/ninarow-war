@@ -13,15 +13,17 @@ public class PlayerManager {
     }
 
     private final String name;
+    private final String discType;
     private final PlayerType playerType;
     private int turnsCount = 0;
     private Board board; //TODO : copy
 
 
-    PlayerManager(String name, Board board, PlayerType playerType) {
+    PlayerManager(String name, Board board, PlayerType playerType, String discType) {
         this.name = name;
         this.board = board;
         this.playerType = playerType;
+        this.discType = discType;
     }
 
     //region getters

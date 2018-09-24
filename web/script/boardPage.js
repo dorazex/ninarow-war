@@ -69,16 +69,13 @@
         var playersCount = board.playersCount;
         var cells = board.cells;
         var playersDiscTypeMap = board.playersDiscTypeMap;
-        var columnsBlocks = board.columnsBlocks;
-        var rows = theBoard.length;
-        var columns = theBoard[0].length;
 
         for (var row = 0; row < rowsCount; row++) {
             for (var col = 0; col < columnsCount; col++) {
                 $(document.getElementById("board").rows[row].getElementsByTagName("td")[col])
                     .removeClass()
                     .addClass("waves-effect waves-light toggler")
-                    .addClass(cells[row][col].toLowerCase());
+                    .addClass(cells[row][col]);
             }
         }
     }
@@ -94,7 +91,7 @@
             url: gameURL,
             success: function (board) {
                 createBoard(board);
-                expandPageWidthAccordingToBoard(board.board[0].length + getMaxLengthOfList(board.rowsBlocks));
+                // expandPageWidthAccordingToBoard(board.board[0].length + getMaxLengthOfList(board.rowsBlocks));
             }
         });
     });
@@ -217,18 +214,13 @@
                     blinkTitleWithMessage("Game started");
                     clearInterval(checkGameStartInterval);
 
-                    if (Cookies.get(spectator)) {
-                        $("#sidePanel *").removeClass('disabled').prop('disabled', true);
-                        ajaxUpdateBoardInterval = setInterval(ajaxUpdateBoard, refreshRate);
-                        updateDetailsInterval = setInterval(updateDetailsSpectator, refreshRate);
-                        return;
-                    }
-
-                    else if (Cookies.get("playerType") == "Computer") {
-                        ajaxUpdateBoardInterval = setInterval(ajaxUpdateBoard, refreshRate);
-                    }
-
+                    // if (Cookies.get("playerType") == "Computer") {
+                    //     ajaxUpdateBoardInterval = setInterval(ajaxUpdateBoard, refreshRate);
+                    // }
+                    ajaxUpdateBoardInterval = setInterval(ajaxUpdateBoard, refreshRate);
                     updateDetailsInterval = setInterval(updateDetails, refreshRate);    // relevant to player, not spectator
+                } else {
+                    ajaxUpdateBoardInterval = setInterval(ajaxUpdateBoard, refreshRate);
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {

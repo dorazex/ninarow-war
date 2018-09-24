@@ -19,64 +19,27 @@ function createPlayerIcon(usertype){
     }
 }
 
-function createBoard(theBoard) {
+function createBoard(board) {
     var table = $("#board");
     table.addClass("board");
-    createTopPart(theBoard, table);
-    createDownPart(theBoard, table);
-}
 
-function createTopPart(board, table) {
-    var theBoard = board.board;
-    var columns = theBoard[0].length;
-    var columnsBlocks = board.columnsBlocks;
-    var maxRowBlock = getMaxLengthOfList(board.rowsBlocks);
-    var maxColumnBlock = getMaxLengthOfList(columnsBlocks);
+    var cells = board.cells;
+    var columnsCount = board.columnsCount;
+    var rowsCount = board.rowsCount;
 
-    for (var row = 0; row < maxColumnBlock; row++) {
+    for (var row = 0; row < rowsCount; row++) {
         var tr = document.createElement('tr');
-        for (var column = 0; column < columns + maxRowBlock; column++) {
+        for (var column = 0; column < columnsCount; column++) {
             var td = document.createElement('td');
             td.classList.add("block");
-            if (column >= maxRowBlock && maxColumnBlock - row <= columnsBlocks[column - maxRowBlock].length) {
-                td.innerText = columnsBlocks[column - maxRowBlock][columnsBlocks[column - maxRowBlock].length - maxColumnBlock + row].key.toString();
-            }
+            td.innerText = cells[row][column];
             tr.appendChild(td);
         }
         table.append(tr);
     }
+
 }
 
-function createDownPart(board, table) {
-    var theBoard = board.board;
-    var rowsBlocks = board.rowsBlocks;
-    var columnsBlocks = board.columnsBlocks;
-    var rows = theBoard.length;
-    var columns = theBoard[0].length;
-    var maxRowBlock = getMaxLengthOfList(rowsBlocks);
-
-    for (var row = 0; row < rows; row++) {
-        var tr = document.createElement('tr');
-        for (var column = 0; column < columns + maxRowBlock; column++) {
-            var td = document.createElement('td');
-            td.setAttribute("row", row);
-            td.setAttribute("column", (column - maxRowBlock));
-            if (column < maxRowBlock && maxRowBlock - column <= rowsBlocks[row].length) {
-                td.classList.add("block");
-                td.innerText = rowsBlocks[row][rowsBlocks[row].length - maxRowBlock + column].key;
-            }
-            else if (column >= maxRowBlock) {   // add class according to real board
-                td.classList.add("waves-effect", "waves-light", "toggler");
-                td.classList.add(theBoard[row][column - maxRowBlock].toLowerCase());
-            }
-            else {
-                td.classList.add("block");
-            }
-            tr.appendChild(td);
-        }
-        table.append(tr);
-    }
-}
 
 function getMaxLengthOfList(list) {
     var retValue = 0;

@@ -7,9 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32da28f5-b461-4b69-95e5-e69c2628b2ba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/GameEngine/SimpleBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEngine/SimpleBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlets/GameServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlets/GameServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/script/boardPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/script/boardPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/script/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/script/common.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -57,7 +54,7 @@
           <entry key="dummy" value="39" />
           <entry key="html" value="21" />
           <entry key="java" value="3713" />
-          <entry key="js" value="613" />
+          <entry key="js" value="694" />
           <entry key="xml" value="51" />
         </counts>
       </usages-collector>
@@ -65,7 +62,7 @@
         <counts>
           <entry key="HTML" value="21" />
           <entry key="JAVA" value="3713" />
-          <entry key="JavaScript" value="613" />
+          <entry key="JavaScript" value="694" />
           <entry key="PLAIN_TEXT" value="39" />
           <entry key="XML" value="51" />
         </counts>
@@ -208,8 +205,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/script/common.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+            <state relative-caret-position="284">
+              <caret line="71" column="47" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
@@ -400,7 +397,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537810525458" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537810897312" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/XmlLoader" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -570,12 +567,12 @@
       <updated>1537538997674</updated>
       <workItem from="1537539005353" duration="19707000" />
       <workItem from="1537688041551" duration="7814000" />
-      <workItem from="1537703371269" duration="22477000" />
+      <workItem from="1537703371269" duration="22862000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49998000" />
+    <option name="totallyTimeSpent" value="50383000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1665" y="-4" width="1855" height="1084" extended-state="6" />
@@ -1056,8 +1053,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/script/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+        <state relative-caret-position="284">
+          <caret line="71" column="47" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
           <folding>
             <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />

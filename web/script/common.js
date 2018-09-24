@@ -27,12 +27,49 @@ function createBoard(board) {
     var columnsCount = board.columnsCount;
     var rowsCount = board.rowsCount;
 
+    // create top buttons
+    var tr = document.createElement('tr');
+    for (var column = 0; column < columnsCount; column++) {
+        var td = document.createElement('td');
+        var button = document.createElement('button')
+        button.classList.add("btn");
+        button.classList.add("btn-default");
+        button.classList.add("btn-sm");
+        button.classList.add("waves-effect");
+        button.classList.add("waves-light");
+        button.innerText = "v";
+        td.classList.add("block");
+        td.appendChild(button);
+        tr.appendChild(td);
+    }
+    table.append(tr);
+
+    // create board
     for (var row = 0; row < rowsCount; row++) {
         var tr = document.createElement('tr');
         for (var column = 0; column < columnsCount; column++) {
             var td = document.createElement('td');
             td.classList.add("block");
             td.innerText = cells[row][column];
+            tr.appendChild(td);
+        }
+        table.append(tr);
+    }
+
+    if (board.isPopOut == true) {
+        // create bottom buttons
+        var tr = document.createElement('tr');
+        for (var column = 0; column < columnsCount; column++) {
+            var td = document.createElement('td');
+            var button = document.createElement('button')
+            button.classList.add("btn");
+            button.classList.add("btn-default");
+            button.classList.add("btn-sm");
+            button.classList.add("waves-effect");
+            button.classList.add("waves-light");
+            button.innerText = "^";
+            td.classList.add("block");
+            td.appendChild(button);
             tr.appendChild(td);
         }
         table.append(tr);

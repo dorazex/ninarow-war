@@ -16,13 +16,15 @@ public class SimpleBoard {
     private Integer columnsCount;
     private HashMap<Integer, String> playersDiscTypeMap;
     private Integer playersCount;
+    private Boolean isPopOut;
 
 
-    public SimpleBoard(ArrayList<ArrayList<Integer>> cells, HashMap<Integer, String> playersDiscTypeMap) {
+    public SimpleBoard(ArrayList<ArrayList<Integer>> cells, HashMap<Integer, String> playersDiscTypeMap, Boolean isPopOut) {
         this.cells = cells;
         this.rowsCount = this.cells.size();
         this.columnsCount = this.cells.get(0).size();
         this.playersDiscTypeMap = playersDiscTypeMap;
         this.playersCount = this.playersDiscTypeMap.size();
+        this.isPopOut = isPopOut;
     }
 }

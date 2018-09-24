@@ -70,7 +70,7 @@
         var cells = board.cells;
         var playersDiscTypeMap = board.playersDiscTypeMap;
 
-        for (var row = 0; row < rowsCount; row++) {
+        for (var row = 1; row < rowsCount - 1; row++) {
             for (var col = 0; col < columnsCount; col++) {
                 $(document.getElementById("board").rows[row].getElementsByTagName("td")[col])
                     .removeClass()

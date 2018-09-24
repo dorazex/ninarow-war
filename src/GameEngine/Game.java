@@ -59,14 +59,20 @@ public class Game {
 
     public List<PlayerManager> makePlayerAndSpectatorList() {
 
-        Stream playersStream = players.stream();
+        List<PlayerManager> playersManagers = new ArrayList<>();
+        for (Player player :
+                this.players) {
+            PlayerManager.PlayerType playerType;
+            if (player.getClass().getSimpleName().contains("Computer")){
+                playerType = PlayerManager.PlayerType.Computer;
+            } else {
+                playerType = PlayerManager.PlayerType.Human;
+            }
+            PlayerManager playerManager = new PlayerManager(player.getName(), getBoard(), playerType);
+            playersManagers.add(playerManager);
+        }
 
-        return (List<PlayerManager>) playersStream
-                .map(item -> {
-                    return new PlayerManager(((PlayerManager) item).getName(), getBoard(), ((PlayerManager) item).getPlayerType());
-
-                })
-                .collect(Collectors.toList());
+        return playersManagers;
     }
 
     private Integer getPlayerIndexOfUser(String username){

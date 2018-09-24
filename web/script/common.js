@@ -17,9 +17,6 @@ function createPlayerIcon(usertype){
     else if(usertype == "Computer"){
         return '<img src="images/robot.png" class="img" alt="Computer" width="30" height="30" style="box-shadow: none;">';
     }
-    else if(usertype == "Spectator"){
-        return '<img src="images/eye.png" class="img" alt="Spectator" width="30" height="30" style="box-shadow: none;">';
-    }
 }
 
 function createBoard(theBoard) {

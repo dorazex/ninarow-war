@@ -21,4 +21,7 @@ class SimplePlayer {
     public PlayerManager.PlayerType getPlayerType() {
         return playerType;
     }
+    public String getPlayerTypeString() {
+        return playerType.toString();
+    }
 }

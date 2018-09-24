@@ -241,9 +241,9 @@
             data: makeUserOptions("checkGameStart"),
             url: gameURL,
             success: function (response) {
-                updatePlayerList(response.value);
+                updatePlayerList(response.second);
 
-                if (response.key) { //if started
+                if (response.first) { //if started
                     showMessage("Nonogram", "Game started");
                     $("#sidePanel *").removeClass('disabled').prop('disabled', false);
                     blinkTitleWithMessage("Game started");
@@ -290,10 +290,9 @@
                     if(isReplayMode == false){ //remove disable only if not in replay
                         $("#sidePanel *").removeClass('disabled').prop('disabled', false);
                     }
-                    $("#moves").text("Moves: " + response.numOfTurns + "/2");
-                    updatePerfectBlock(response.rowsBlocks, response.columnsBlocks);
+                    // updatePerfectBlock(response.rowsBlocks, response.columnsBlocks);
 
-                    if (response.numOfTurns == 2) {
+                    if (response.isGameOver) {
                         $("#mainControl *").addClass('disabled').prop('disabled', true);
                     }
                     else {
@@ -304,11 +303,6 @@
                     $("#controlPanel *").addClass('disabled').prop('disabled', true);
                 }
 
-                if (isReplayMode == true) {
-                    $("#controlPanel *").addClass('disabled').prop('disabled', true);
-                }
-
-                $("#rounds").text("Rounds: " + response.currentRound + "/" + response.totalRounds);
                 $("#username").text("Username: " + Cookies.get(organizer));
                 $("#roomid").text("Room ID: " + Cookies.get(roomid));
                 $("#currPlayer").text("Current Player: " + response.currentPlayerName);
@@ -368,21 +362,12 @@
         //g(playerList);
         $("#userslist").empty();
         $.each(playerList || [], function (index, element) {
-            console.log(element.first);
-            if (element.first.toLowerCase() == spectator) {
-                $('<tr>' +
-                    '<td align="center">' + createPlayerIcon(element.first) + '</td>' +
-                    '<td>' + element.second + '</td>' +
-                    '<td>' + "-" + '</td>' +
-                    '</tr>').appendTo($("#userslist"));
-            }
-            else {
-                $('<tr>' +
-                    '<td align="center">' + createPlayerIcon(element.first) + '</td>' +
-                    '<td>' + element.second + '</td>' +
-                    '<td>' + element.third + '</td>' +
-                    '</tr>').appendTo($("#userslist"));
-            }
+            // console.log(element.first);
+
+            $('<tr>' +
+                '<td align="center">' + createPlayerIcon(element.playerType) + '</td>' +
+                '<td>' + element.name + '</td>' +
+                '</tr>').appendTo($("#userslist"));
 
         });
     }

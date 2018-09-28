@@ -39,7 +39,9 @@ function createBoard(board) {
         button.classList.add("waves-light");
         button.innerText = "v";
         button.setAttribute("id", "top-btn-" + column);
-        td.classList.add("block");
+        td.classList.add("waves-effect")
+        td.classList.add("waves-light")
+        td.classList.add("toggler")
         td.appendChild(button);
         tr.appendChild(td);
     }
@@ -74,7 +76,9 @@ function createBoard(board) {
             button.classList.add("waves-light");
             button.innerText = "^";
             button.setAttribute("id", "bottom-btn-" + column);
-            td.classList.add("block");
+            td.classList.add("waves-effect")
+            td.classList.add("waves-light")
+            td.classList.add("toggler")
             td.appendChild(button);
             tr.appendChild(td);
         }

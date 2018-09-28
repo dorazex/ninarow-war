@@ -82,9 +82,9 @@
         }
     }
 
-    $(document).on("click", "td.toggler", function () {
-        $(this).toggleClass('selected');
-    });
+    // $(document).on("click", "td.toggler", function () {
+    //     $(this).toggleClass('selected');
+    // });
 
     $(document).ready(function ajaxBoard() {
 
@@ -242,7 +242,7 @@
                     showMessage("Timeout", "No connection", true);
                 }
                 else if (XMLHttpRequest.readyState == 0) {
-                    showMessage("Error", "Lost connection with server", true);
+                    // showMessage("Error", "Lost connection with server", true);
                 }
             },
             timeout: 10000
@@ -293,7 +293,7 @@
                     showMessage("Timeout", "No connection", true);
                 }
                 else if (XMLHttpRequest.readyState == 0) {
-                    showMessage("Error", "Lost connection with server", true);
+                    // showMessage("Error", "Lost connection with server", true);
                 }
             },
             timeout: 10000
@@ -305,8 +305,13 @@
         $("#userslist").empty();
         $.each(playerList || [], function (index, element) {
             // console.log(element.first);
+            var currIndicator = "";
+            if (element.name == currentPlayerName){
+                currIndicator = ">";
+            }
 
             $('<tr>' +
+                '<td>' + currIndicator + '</td>' +
                 '<td align="center">' + createPlayerIcon(element.playerType) + '</td>' +
                 '<td>' + element.name + '</td>' +
                 '<td>' + element.turnsCount + '</td>' +

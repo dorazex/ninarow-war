@@ -22,10 +22,14 @@ function createPlayerIcon(usertype){
 function createBoard(board) {
     var table = $("#board");
     table.addClass("board");
-
+    console.log(table);
+    var tableWidth = parseInt(table.width());
     var cells = board.cells;
+
     var columnsCount = board.columnsCount;
     var rowsCount = board.rowsCount;
+
+    var calculatedColumnWidth = Math.round((tableWidth - 50)/ columnsCount);
 
     // create top buttons
     var tr = document.createElement('tr');
@@ -39,6 +43,7 @@ function createBoard(board) {
         button.classList.add("waves-light");
         button.innerText = "v";
         button.setAttribute("id", "top-btn-" + column);
+        button.setAttribute("style", "width:" + calculatedColumnWidth.toString());
         td.classList.add("waves-effect")
         td.classList.add("waves-light")
         td.classList.add("toggler")
@@ -76,6 +81,7 @@ function createBoard(board) {
             button.classList.add("waves-light");
             button.innerText = "^";
             button.setAttribute("id", "bottom-btn-" + column);
+            button.setAttribute("style", "width:" + calculatedColumnWidth.toString());
             td.classList.add("waves-effect")
             td.classList.add("waves-light")
             td.classList.add("toggler")
@@ -97,3 +103,9 @@ function getMaxLengthOfList(list) {
     }
     return retValue;
 }
+
+function sleepFor( sleepDuration ){
+    var now = new Date().getTime();
+    while(new Date().getTime() < now + sleepDuration){ /* do nothing */ }
+}
+

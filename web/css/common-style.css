@@ -91,4 +91,6 @@ body,
 .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5,
 .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
     font-size: 10px;
+    width: 70%;
+    height:70%;
 }

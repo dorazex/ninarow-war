@@ -21,8 +21,8 @@ public class SimpleBoard {
 
     public SimpleBoard(ArrayList<ArrayList<Integer>> cells, HashMap<Integer, String> playersDiscTypeMap, Boolean isPopOut) {
         this.cells = cells;
-        this.rowsCount = this.cells.size();
-        this.columnsCount = this.cells.get(0).size();
+        this.columnsCount = this.cells.size();
+        this.rowsCount = this.cells.get(0).size();
         this.playersDiscTypeMap = playersDiscTypeMap;
         this.playersCount = this.playersDiscTypeMap.size();
         this.isPopOut = isPopOut;

@@ -316,6 +316,10 @@ public class Game {
     public Boolean makeTurn(){
         TurnRecord turnRecord = this.players.get(this.currentPlayerIndex).makeTurn(this.board);
         this.history.pushTurn(turnRecord);
+        return finalizeTurn();
+    }
+
+    public Boolean finalizeTurn(){
         if (this.isEndWithWinner()){
             this.winnerPlayer = this.players.get(this.currentPlayerIndex);
             this.isGameOver = true;

@@ -45,6 +45,9 @@ public class GameServlet extends HttpServlet {
             case Constants.BOARD:
                 handleBoard(request, response);
                 break;
+            case Constants.TURN:
+                handleTurn(request, response);
+                break;
             case Constants.CHECK_GAME_START:
                 handleCheckGameStart(request, response);
                 break;
@@ -80,6 +83,28 @@ public class GameServlet extends HttpServlet {
         Map<String, String> result = new HashMap<>();
         result.put("redirect", "rooms.html");
         String json = gson.toJson(result);
+        response.getWriter().write(json);
+    }
+
+    private void handleTurn(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Game game = getGame(request);
+
+        Integer column = Integer.parseInt(request.getParameter("column"));
+        String organizer = request.getParameter("organizer");
+        String isPopout = request.getParameter("isPopOut");
+
+        Player player = game.getPlayer(organizer);
+
+        TurnRecord turnRecord;
+        if (isPopout.equals("true")){
+            turnRecord = game.getBoard().popOut(player, column);
+        } else{
+            turnRecord = game.getBoard().putDisc(player, column);
+        }
+        game.getHistory().pushTurn(turnRecord);
+        Boolean isGameOver = game.finalizeTurn();
+
+        String json = gson.toJson(game.getBoard());
         response.getWriter().write(json);
     }
 

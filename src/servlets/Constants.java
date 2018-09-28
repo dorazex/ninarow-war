@@ -14,6 +14,7 @@ public class Constants {
     static final String REDO = "redo";
     static final String TURNDONE = "turnDone";
     static final String BOARD = "board";
+    static final String TURN = "turn";
     static final String CHECK_GAME_START = "checkGameStart";
     static final String SYSTEM_MESSAGE = "systemMessage";
     static final String LEAVE_ROOM = "leaveRoom";

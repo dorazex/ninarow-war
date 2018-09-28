@@ -38,7 +38,7 @@ function createBoard(board) {
         button.classList.add("waves-effect");
         button.classList.add("waves-light");
         button.innerText = "v";
-        button.setAttribute("name", "top-btn-" + column);
+        button.setAttribute("id", "top-btn-" + column);
         td.classList.add("block");
         td.appendChild(button);
         tr.appendChild(td);
@@ -51,7 +51,11 @@ function createBoard(board) {
         for (var column = 0; column < columnsCount; column++) {
             var td = document.createElement('td');
             td.classList.add("block");
-            td.innerText = cells[row][column];
+            if (cells[column][row] == undefined){
+                console.log("column:" + column);
+                console.log("row:" + row);
+            }
+            td.innerText = cells[column][row];
             tr.appendChild(td);
         }
         table.append(tr);
@@ -69,7 +73,7 @@ function createBoard(board) {
             button.classList.add("waves-effect");
             button.classList.add("waves-light");
             button.innerText = "^";
-            button.setAttribute("name", "bottom-btn-" + column);
+            button.setAttribute("id", "bottom-btn-" + column);
             td.classList.add("block");
             td.appendChild(button);
             tr.appendChild(td);

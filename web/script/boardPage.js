@@ -75,7 +75,7 @@
                 $(document.getElementById("board").rows[row].getElementsByTagName("td")[col])
                     .removeClass()
                     .addClass("waves-effect waves-light toggler")
-                    .addClass(cells[row][col]);
+                    .addClass(cells[col][row]);
             }
         }
     }
@@ -92,6 +92,16 @@
             success: function (board) {
                 createBoard(board);
                 // expandPageWidthAccordingToBoard(board.board[0].length + getMaxLengthOfList(board.rowsBlocks));
+
+                for (var column = 0; column < board.columnsCount; column++) {
+                    $(document).on("click", "#top-btn-" + column, function (e) {
+                        doMove(column, false);
+                    });
+
+                    $(document).on("click", "#bottom-btn-" + column, function (e) {
+                        doMove(column, true);
+                    });
+                }
             }
         });
     });
@@ -100,30 +110,18 @@
 
 //region game controls
 
-    function doMove(move) {
-        var selectedCoords = [];
-        $("#board").find("td.toggler.selected").each(function () {
-            var row = $(this).attr("row");
-            var column = $(this).attr("column");
-            selectedCoords.push(new Coordinate(row, column));
-        });
-
+    function doMove(column, isPopOut) {
         $.ajax({
             data: {
-                requestType: move,
-                "selectedCoords": JSON.stringify(selectedCoords),
+                requestType: "turn",
+                column: column,
                 roomid: currentRoomId,
                 organizer: Cookies.get(organizer),
+                isPopOut: isPopOut
             },
             url: gameURL,
             success: function (result) {
-                if (result.isSuccessful) {    //we already have the list, so just verify it was successful
-                    $("#board").find("td.toggler.selected").each(function () {
-                        $(this).toggleClass('selected');
-                        $(this).removeClass(this.className.split(' ').pop());
-                        $(this).addClass(move);
-                    });
-                }
+                updateBoard(result);
             }
         });
     }

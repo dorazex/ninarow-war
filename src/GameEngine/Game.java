@@ -68,7 +68,7 @@ public class Game {
             } else {
                 playerType = PlayerManager.PlayerType.Human;
             }
-            PlayerManager playerManager = new PlayerManager(player.getName(), getBoard(), playerType, player.getDiscType());
+            PlayerManager playerManager = new PlayerManager(player.getName(), getBoard(), playerType, player.getDiscType(), player.getTurnsCount());
             playersManagers.add(playerManager);
         }
         this.board.addPlayers(this.players);
@@ -333,6 +333,9 @@ public class Game {
     }
 
     public Boolean finalizeTurn(){
+        this.players.get(this.currentPlayerIndex).turnsCountProperty().set(
+                this.players.get(this.currentPlayerIndex).getTurnsCount() + 1
+        );
         if (this.isEndWithWinner()){
             this.winnerPlayer = this.players.get(this.currentPlayerIndex);
             this.isGameOver = true;

@@ -19,11 +19,12 @@ public class PlayerManager {
     private Board board; //TODO : copy
 
 
-    PlayerManager(String name, Board board, PlayerType playerType, String discType) {
+    PlayerManager(String name, Board board, PlayerType playerType, String discType, int turnsCount) {
         this.name = name;
         this.board = board;
         this.playerType = playerType;
         this.discType = discType;
+        this.turnsCount = turnsCount;
     }
 
     //region getters

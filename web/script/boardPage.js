@@ -15,6 +15,7 @@
     var currentRoomId;  // this enables for the same session to be in different rooms
     var isGameStarted = false;
     var currentPlayerName;
+    var flag = true;
 
     function Coordinate(row, column) {
         this.key = row;
@@ -80,7 +81,29 @@
                 td[0].innerText = cells[col][row - 1];
             }
         }
-    }
+
+        var requestingPlayerName = Cookies.get(organizer);
+        if (isGameStarted) {
+            if (currentPlayerName == requestingPlayerName && Cookies.get(playerType) == "Computer") {
+                if (flag === true) {
+                    $.ajax({
+                        data: {
+                            requestType: "computerTurn",
+                            roomid: currentRoomId,
+                            organizer: requestingPlayerName,
+                        },
+                        url: gameURL,
+                        success: function (result) {
+                            flag = false;
+                            updateBoard(result);
+                        }
+                    });
+                }
+            } else {
+                flag = true;
+            }
+
+    }}
 
     // $(document).on("click", "td.toggler", function () {
     //     $(this).toggleClass('selected');

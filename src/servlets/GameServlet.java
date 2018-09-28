@@ -48,6 +48,9 @@ public class GameServlet extends HttpServlet {
             case Constants.TURN:
                 handleTurn(request, response);
                 break;
+            case Constants.COMPUTER_TURN:
+                handleComputerTurn(request, response);
+                break;
             case Constants.CHECK_GAME_START:
                 handleCheckGameStart(request, response);
                 break;
@@ -125,6 +128,30 @@ public class GameServlet extends HttpServlet {
 //        String json = gson.toJson(game.getBoard());
 //        response.getWriter().write(json);
     }
+
+    private void handleComputerTurn(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Game game = getGame(request);
+
+        String organizer = request.getParameter("organizer");
+
+        Player player = game.getPlayer(organizer);
+
+        Board board = game.getBoard();
+        TurnRecord turnRecord = player.makeTurn(board);
+
+        game.getHistory().pushTurn(turnRecord);
+        Boolean isGameOver = game.finalizeTurn();
+        SimpleBoard responseBoard = new SimpleBoard(board.getCells(), board.getPlayersDiscTypeMap(), game.getVariant().equals("Popout"));
+
+        String boardJson = gson.toJson(responseBoard);
+        PrintWriter out = response.getWriter();
+        out.println(boardJson);
+        out.flush();
+
+//        String json = gson.toJson(game.getBoard());
+//        response.getWriter().write(json);
+    }
+
 
     private void handleGameDetails(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Game game = getGame(request);

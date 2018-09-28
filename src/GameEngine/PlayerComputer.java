@@ -26,7 +26,6 @@ public class PlayerComputer extends PlayerCommon {
             turnRecord = board.putDisc(this, chosenColumn);
             tries += 1;
         }
-        this.setTurnsCount(this.getTurnsCount() + 1);
         return turnRecord;
     }
 

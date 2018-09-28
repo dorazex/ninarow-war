@@ -157,7 +157,18 @@ public class RoomsServlet extends HttpServlet {
             Game game = new Game(target, rows, columns, variant);
             game.setTotalPlayers((Integer)parametersMap.get("total-players"));
             game.setOrganizer(request.getParameter("organizer"));    // set the organizer of the room
-            game.setGameTitle((String)parametersMap.get("game-title"));
+            String gameTitle = (String)parametersMap.get("game-title");
+            game.setGameTitle(gameTitle);
+            game.setStarted(game.getGameRunning());
+            game.setTarget(target);
+            game.setVariant(variant);
+            for (RoomInfo roomInfo :
+                    roomsManager.getRoomList()) {
+                if (gameTitle.equals(roomInfo.getGameTitle())){
+                    response.getWriter().write("Specified game title already exists, please choose a unique name");
+                    return;
+                }
+            }
             ServletUtils.getRoomsManager(getServletContext()).addGame(game);
         } catch (Exception e) {
             response.getWriter().write(e.getMessage());

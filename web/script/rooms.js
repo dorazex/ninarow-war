@@ -32,6 +32,9 @@
                 '<td>' + element.organizer + '</td>' +
                 '<td>' + element.onlinePlayers + "/" + element.totalPlayers + '</td>' +
                 '<td>' + element.rows + "X" + element.columns + '</td>' +
+                '<td>' + element.target + '</td>' +
+                '<td>' + element.variant + '</td>' +
+                '<td>' + element.isStarted + '</td>' +
                 '</tr>').appendTo($("#roomslist"));
 
             if (element.roomIdentifier == selected) {

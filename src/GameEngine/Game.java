@@ -154,6 +154,18 @@ public class Game {
         roomInfo.setGameTitle(gameTitle);
     }
 
+    public void setVariant(String variant) {
+        roomInfo.setVariant(variant);
+    }
+
+    public void setTarget(Integer target) {
+        roomInfo.setTarget(target);
+    }
+
+    public void setStarted(Boolean isStarted) {
+        roomInfo.setStarted(isStarted);
+    }
+
     public void setTotalPlayers(int totalPlayers) {
         roomInfo.setTotalPlayers(totalPlayers);
     }

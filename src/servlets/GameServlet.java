@@ -80,6 +80,7 @@ public class GameServlet extends HttpServlet {
 
     private void handleLeaveRoom(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Game game = getGame(request);
+
         Map<String, String> result = new HashMap<>();
         result.put("redirect", "rooms.html");
         String json = gson.toJson(result);

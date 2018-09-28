@@ -195,7 +195,7 @@ public class Board {
     public TurnRecord putDisc(Player player, int column){
         TurnRecord turnRecord = null;
         if (this.canInsert(column)){
-            this.cells.get(column).set(this.getAvailableIndexInColumn(column), player.getId());
+            this.cells.get(column).set(this.getAvailableIndexInColumn(column), player.getId() + 1);
             turnRecord = new TurnRecord(player, column, false);
         }
         return turnRecord;

@@ -103,9 +103,16 @@ public class GameServlet extends HttpServlet {
         }
         game.getHistory().pushTurn(turnRecord);
         Boolean isGameOver = game.finalizeTurn();
+        Board board = game.getBoard();
+        SimpleBoard responseBoard = new SimpleBoard(board.getCells(), board.getPlayersDiscTypeMap(), game.getVariant().equals("Popout"));
 
-        String json = gson.toJson(game.getBoard());
-        response.getWriter().write(json);
+        String boardJson = gson.toJson(responseBoard);
+        PrintWriter out = response.getWriter();
+        out.println(boardJson);
+        out.flush();
+
+//        String json = gson.toJson(game.getBoard());
+//        response.getWriter().write(json);
     }
 
     private void handleGameDetails(HttpServletRequest request, HttpServletResponse response) throws IOException {

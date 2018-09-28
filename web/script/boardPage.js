@@ -70,12 +70,12 @@
         var cells = board.cells;
         var playersDiscTypeMap = board.playersDiscTypeMap;
 
-        for (var row = 1; row < rowsCount - 1; row++) {
+        for (var row = 1; row < rowsCount + 1; row++) {
             for (var col = 0; col < columnsCount; col++) {
-                $(document.getElementById("board").rows[row].getElementsByTagName("td")[col])
-                    .removeClass()
-                    .addClass("waves-effect waves-light toggler")
-                    .addClass(cells[col][row]);
+                var td = $(document.getElementById("board").rows[row].getElementsByTagName("td")[col]);
+                td.removeClass();
+                td.addClass("waves-effect waves-light toggler");
+                td[0].innerText = cells[col][row - 1];
             }
         }
     }
@@ -95,11 +95,15 @@
 
                 for (var column = 0; column < board.columnsCount; column++) {
                     $(document).on("click", "#top-btn-" + column, function (e) {
-                        doMove(column, false);
+                        var idParts = e.currentTarget.id.split("-");
+                        var id = idParts[idParts.length - 1];
+                        doMove(parseInt(id) + 1, false);
                     });
 
                     $(document).on("click", "#bottom-btn-" + column, function (e) {
-                        doMove(column, true);
+                        var idParts = e.currentTarget.id.split("-");
+                        var id = idParts[idParts.length - 1];
+                        doMove(parseInt(id) + 1, true);
                     });
                 }
             }
@@ -114,7 +118,7 @@
         $.ajax({
             data: {
                 requestType: "turn",
-                column: column,
+                column: column-1,
                 roomid: currentRoomId,
                 organizer: Cookies.get(organizer),
                 isPopOut: isPopOut

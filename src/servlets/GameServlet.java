@@ -135,6 +135,15 @@ public class GameServlet extends HttpServlet {
         String organizer = request.getParameter("organizer");
 
         Player player = game.getPlayer(organizer);
+        if (!player.getName().equals(game.getCurrentPlayer().getName())){
+            if(request.getParameter("playerType").equals("Computer")){
+                return;
+            } else{
+                String responseString = gson.toJson("Wait for your turn");
+                response.getWriter().write(responseString);
+                return;
+            }
+        }
 
         Board board = game.getBoard();
         TurnRecord turnRecord = player.makeTurn(board);

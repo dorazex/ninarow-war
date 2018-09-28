@@ -7,8 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32da28f5-b461-4b69-95e5-e69c2628b2ba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/GameEngine/PlayerComputer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEngine/PlayerComputer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servlets/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlets/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ninarow_war_war_exploded/ninarow-war_war exploded.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ninarow_war_war_exploded/ninarow-war_war exploded.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ninarow-war/GameEngine/PlayerComputer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ninarow-war/GameEngine/PlayerComputer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ninarow-war/servlets/GameServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ninarow-war/servlets/GameServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servlets/GameServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servlets/GameServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/script/boardPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/script/boardPage.js" afterDir="false" />
     </list>
@@ -57,8 +59,8 @@
           <entry key="css" value="30" />
           <entry key="dummy" value="39" />
           <entry key="html" value="49" />
-          <entry key="java" value="5237" />
-          <entry key="js" value="2203" />
+          <entry key="java" value="5389" />
+          <entry key="js" value="2249" />
           <entry key="xml" value="51" />
         </counts>
       </usages-collector>
@@ -66,8 +68,8 @@
         <counts>
           <entry key="CSS" value="30" />
           <entry key="HTML" value="49" />
-          <entry key="JAVA" value="5237" />
-          <entry key="JavaScript" value="2203" />
+          <entry key="JAVA" value="5389" />
+          <entry key="JavaScript" value="2249" />
           <entry key="PLAIN_TEXT" value="39" />
           <entry key="XML" value="51" />
         </counts>
@@ -79,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/script/boardPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="89" column="31" lean-forward="true" selection-start-line="89" selection-start-column="31" selection-end-line="89" selection-end-column="31" />
+            <state relative-caret-position="308">
+              <caret line="158" column="65" selection-start-line="158" selection-start-column="47" selection-end-line="158" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -102,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/src/GameEngine/Game.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="328" column="19" selection-start-line="328" selection-start-column="19" selection-end-line="328" selection-end-column="19" />
+              <caret line="334" column="19" selection-start-line="334" selection-start-column="19" selection-end-line="334" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5031#5032#0" expanded="true" />
@@ -120,11 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameEngine/PlayerComputer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+            <state relative-caret-position="176">
+              <caret line="21" column="59" lean-forward="true" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -138,15 +140,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/servlets/GameServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+            <state relative-caret-position="327">
+              <caret line="143" column="23" selection-start-line="143" selection-start-column="23" selection-end-line="143" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#10258#10259#0" expanded="true" />
-                <element signature="e#10300#10301#0" expanded="true" />
+                <element signature="e#10305#10306#0" expanded="true" />
+                <element signature="e#10347#10348#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -206,10 +208,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Lost connection</find>
-      <find>domove</find>
-      <find>top-btn</find>
-      <find>col-xs-9</find>
       <find>id=&quot;boar</find>
       <find>handlelea</find>
       <find>xml</find>
@@ -224,7 +222,6 @@
       <find>setTarget</find>
       <find>setVariant</find>
       <find>userslist</find>
-      <find>handleturn</find>
       <find>add</find>
       <find>getturnscount</find>
       <find>putdidc</find>
@@ -236,6 +233,11 @@
       <find>updateboard</find>
       <find>cookies.get</find>
       <find>&quot;turn&quot;</find>
+      <find>getclass</find>
+      <find>handleturn</find>
+      <find>computerturn</find>
+      <find>inval</find>
+      <find>invalid</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -269,9 +271,9 @@
         <option value="$PROJECT_DIR$/src/GameEngine/Game.java" />
         <option value="$PROJECT_DIR$/src/GameEngine/Board.java" />
         <option value="$PROJECT_DIR$/src/servlets/Constants.java" />
-        <option value="$PROJECT_DIR$/src/servlets/GameServlet.java" />
-        <option value="$PROJECT_DIR$/web/script/boardPage.js" />
         <option value="$PROJECT_DIR$/src/GameEngine/PlayerComputer.java" />
+        <option value="$PROJECT_DIR$/web/script/boardPage.js" />
+        <option value="$PROJECT_DIR$/src/servlets/GameServlet.java" />
       </list>
     </option>
   </component>
@@ -381,7 +383,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538172855797" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538175409368" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/XmlLoader" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -551,18 +553,18 @@
       <updated>1537538997674</updated>
       <workItem from="1537539005353" duration="19707000" />
       <workItem from="1537688041551" duration="7814000" />
-      <workItem from="1537703371269" duration="53335000" />
+      <workItem from="1537703371269" duration="55695000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80856000" />
+    <option name="totallyTimeSpent" value="83216000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1535" height="904" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25520483" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25520483" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -572,7 +574,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3294979" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4072165" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4072165" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39948454" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -609,12 +611,6 @@
           <line>4</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/servlets/GameServlet.java</url>
-          <line>139</line>
-          <properties />
-          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1024,10 +1020,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameEngine/PlayerComputer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="21" column="59" lean-forward="true" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GameEngine/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="328" column="19" selection-start-line="328" selection-start-column="19" selection-end-line="328" selection-end-column="19" />
+          <caret line="334" column="19" selection-start-line="334" selection-start-column="19" selection-end-line="334" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5031#5032#0" expanded="true" />
@@ -1044,29 +1047,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlets/GameServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#10258#10259#0" expanded="true" />
-            <element signature="e#10300#10301#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/script/boardPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="89" column="31" lean-forward="true" selection-start-line="89" selection-start-column="31" selection-end-line="89" selection-end-column="31" />
+        <state relative-caret-position="308">
+          <caret line="158" column="65" selection-start-line="158" selection-start-column="47" selection-end-line="158" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameEngine/PlayerComputer.java">
+    <entry file="file://$PROJECT_DIR$/src/servlets/GameServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        <state relative-caret-position="327">
+          <caret line="143" column="23" selection-start-line="143" selection-start-column="23" selection-end-line="143" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#10305#10306#0" expanded="true" />
+            <element signature="e#10347#10348#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

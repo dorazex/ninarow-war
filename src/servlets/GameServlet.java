@@ -99,8 +99,18 @@ public class GameServlet extends HttpServlet {
         TurnRecord turnRecord;
         if (isPopout.equals("true")){
             turnRecord = game.getBoard().popOut(player, column);
+            if (turnRecord==null){
+                String responseString = gson.toJson("Cannot pop out: chosen column's bottom disc is not yours");
+                response.getWriter().write(responseString);
+                return;
+            }
         } else{
             turnRecord = game.getBoard().putDisc(player, column);
+            if (turnRecord==null){
+                String responseString = gson.toJson("Cannot put disc: column is full");
+                response.getWriter().write(responseString);
+                return;
+            }
         }
         game.getHistory().pushTurn(turnRecord);
         Boolean isGameOver = game.finalizeTurn();

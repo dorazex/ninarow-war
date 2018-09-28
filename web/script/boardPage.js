@@ -130,7 +130,11 @@
                     },
                     url: gameURL,
                     success: function (result) {
-                        updateBoard(result);
+                        if ((typeof result) == "string"){
+                            showMessage("Invalid Action", result, true);
+                        } else {
+                            updateBoard(result);
+                        }
                     }
                 });
             }

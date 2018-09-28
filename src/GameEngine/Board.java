@@ -49,7 +49,7 @@ public class Board {
     }
 
     private Boolean canPopOut(Integer column, Player player){
-        return this.cells.get(column).get(this.cells.get(column).size() - 1).equals(player.getId());
+        return this.cells.get(column).get(this.cells.get(column).size() - 1).equals(player.getId() + 1);
     }
 
     private Integer getAvailableIndexInColumn(int column){

@@ -131,7 +131,7 @@
                 }
             });
         } else{
-            showMessage("Invalid Action", "Game has not started yet: cannot make any move")
+            showMessage("Invalid Action", "Game has not started yet: cannot make any move", true)
         }
     }
 
@@ -270,39 +270,6 @@
                     $("#controlPanel *").addClass('disabled').prop('disabled', true);
                 }
 
-                $("#username").text("Username: " + Cookies.get(organizer));
-                $("#roomid").text("Room ID: " + Cookies.get(roomid));
-                $("#currPlayer").text("Current Player: " + response.currentPlayerName);
-
-                updatePlayerList(response.playerList);
-
-                if (response.isGameOver) { //if game over
-                    handleGameOver();
-                }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                if (textStatus === "timeout") {
-                    showMessage("Timeout", "No connection", true);
-                }
-                else if (XMLHttpRequest.readyState == 0) {
-                    showMessage("Error", "Lost connection with server", true);
-                }
-            },
-            timeout: 10000
-        });
-    }
-
-    function updateDetailsSpectator() {
-        $.ajax({
-            data: {
-                requestType: "gameDetails",
-                roomid: currentRoomId
-            },
-            url: gameURL,
-            success: function (response) {
-
-                $("#moves").text("Moves: " + response.numOfTurns + "/2");
-                $("#rounds").text("Rounds: " + response.currentRound + "/" + response.totalRounds);
                 $("#username").text("Username: " + Cookies.get(organizer));
                 $("#roomid").text("Room ID: " + Cookies.get(roomid));
                 $("#currPlayer").text("Current Player: " + response.currentPlayerName);

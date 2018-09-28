@@ -68,7 +68,7 @@ public class Board {
 
     private Boolean isTargetInSequence(List<Player> players, String sequence, Integer target){
         for (Player player: players){
-            if (sequence.matches(String.format(".*%s{%d}.*", this.playersDiscTypeMap.get(player.getId()), target))) {
+            if (sequence.matches(String.format(".*%s{%d}.*", this.playersDiscTypeMap.get(player.getId() + 1), target))) {
                 return true;
             }
         }

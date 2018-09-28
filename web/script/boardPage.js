@@ -14,6 +14,7 @@
     var isReplayMode = false;
     var currentRoomId;  // this enables for the same session to be in different rooms
     var isGameStarted = false;
+    var currentPlayerName;
 
     function Coordinate(row, column) {
         this.key = row;
@@ -116,22 +117,28 @@
 //region game controls
 
     function doMove(column, isPopOut) {
+        var requestingPlayerName = Cookies.get(organizer);
         if (isGameStarted) {
-            $.ajax({
-                data: {
-                    requestType: "turn",
-                    column: column - 1,
-                    roomid: currentRoomId,
-                    organizer: Cookies.get(organizer),
-                    isPopOut: isPopOut
-                },
-                url: gameURL,
-                success: function (result) {
-                    updateBoard(result);
-                }
-            });
+            if (currentPlayerName == requestingPlayerName) {
+                $.ajax({
+                    data: {
+                        requestType: "turn",
+                        column: column - 1,
+                        roomid: currentRoomId,
+                        organizer: requestingPlayerName,
+                        isPopOut: isPopOut
+                    },
+                    url: gameURL,
+                    success: function (result) {
+                        updateBoard(result);
+                    }
+                });
+            }
+            else {
+                showMessage("Invalid Action", "Wait for your turn", true);
+            }
         } else{
-            showMessage("Invalid Action", "Game has not started yet: cannot make any move", true)
+            showMessage("Invalid Action", "Game has not started yet: cannot make any move", true);
         }
     }
 
@@ -273,6 +280,7 @@
                 $("#username").text("Username: " + Cookies.get(organizer));
                 $("#roomid").text("Room ID: " + Cookies.get(roomid));
                 $("#currPlayer").text("Current Player: " + response.currentPlayerName);
+                currentPlayerName = response.currentPlayerName;
 
                 updatePlayerList(response.playerList);
 

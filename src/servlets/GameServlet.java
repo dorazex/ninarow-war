@@ -73,8 +73,8 @@ public class GameServlet extends HttpServlet {
     private void handleSystemMessage(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Game game = getGame(request);
 //        String responseString = gson.toJson(game.getSystemMessage());
-        String responseString = gson.toJson("STUB SYSTEM MESSAGE");
-        //getGameManager(request).resetGame();
+        String responseString = gson.toJson("... And the winner is: " + game.getWinnerPlayer().getName());
+//        getGame(request).resetGame();
         response.getWriter().write(responseString);
     }
 

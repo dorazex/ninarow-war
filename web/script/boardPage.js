@@ -13,6 +13,7 @@
     var reviewOffset = 0;
     var isReplayMode = false;
     var currentRoomId;  // this enables for the same session to be in different rooms
+    var isGameStarted = false;
 
     function Coordinate(row, column) {
         this.key = row;
@@ -115,19 +116,23 @@
 //region game controls
 
     function doMove(column, isPopOut) {
-        $.ajax({
-            data: {
-                requestType: "turn",
-                column: column-1,
-                roomid: currentRoomId,
-                organizer: Cookies.get(organizer),
-                isPopOut: isPopOut
-            },
-            url: gameURL,
-            success: function (result) {
-                updateBoard(result);
-            }
-        });
+        if (isGameStarted) {
+            $.ajax({
+                data: {
+                    requestType: "turn",
+                    column: column - 1,
+                    roomid: currentRoomId,
+                    organizer: Cookies.get(organizer),
+                    isPopOut: isPopOut
+                },
+                url: gameURL,
+                success: function (result) {
+                    updateBoard(result);
+                }
+            });
+        } else{
+            showMessage("Invalid Action", "Game has not started yet: cannot make any move")
+        }
     }
 
 
@@ -209,8 +214,8 @@
             url: gameURL,
             success: function (response) {
                 updatePlayerList(response.second);
-
-                if (response.first) { //if started
+                isGameStarted = response.first;
+                if (isGameStarted) { //if started
                     showMessage("Nonogram", "Game started");
                     $("#sidePanel *").removeClass('disabled').prop('disabled', false);
                     blinkTitleWithMessage("Game started");

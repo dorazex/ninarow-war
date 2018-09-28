@@ -182,7 +182,7 @@ public class Board {
         int i = 0;
         for (Player player: players){
 //            String lastCharOfDiscType = Character.toString(player.getDiscType().charAt(player.getDiscType().length() - 1));
-            this.playersDiscTypeMap.put(player.getId(), String.format("%d", i + 1));
+            this.playersDiscTypeMap.put(player.getId() + 1, String.format("%d", i + 1));
             i++;
         }
         this.playersCount = players.size();

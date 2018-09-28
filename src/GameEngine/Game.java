@@ -71,6 +71,7 @@ public class Game {
             PlayerManager playerManager = new PlayerManager(player.getName(), getBoard(), playerType, player.getDiscType());
             playersManagers.add(playerManager);
         }
+        this.board.addPlayers(this.players);
 
         return playersManagers;
     }

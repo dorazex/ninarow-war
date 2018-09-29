@@ -225,7 +225,7 @@
                 '<td align="center">' + createPlayerIcon(element.playerType) + '</td>' +
                 '<td>' + element.name + '</td>' +
                 '<td>' + element.turnsCount + '</td>' +
-                '<td>' + element.discType + '</td>' +
+                '<td style="background: '+ element.discType + '"></td>' +
                 '</tr>').appendTo($("#userslist"));
         });
     }

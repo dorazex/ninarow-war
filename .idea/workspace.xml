@@ -7,9 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32da28f5-b461-4b69-95e5-e69c2628b2ba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/GameEngine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEngine/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/script/boardPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/script/boardPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/script/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/script/common.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,7 +35,7 @@
           <entry key="css" value="13" />
           <entry key="html" value="14" />
           <entry key="ico" value="2" />
-          <entry key="java" value="107" />
+          <entry key="java" value="109" />
           <entry key="js" value="26" />
           <entry key="jsp" value="3" />
           <entry key="less" value="1" />
@@ -50,7 +48,7 @@
           <entry key="CSS" value="13" />
           <entry key="HTML" value="14" />
           <entry key="Image" value="5" />
-          <entry key="JAVA" value="107" />
+          <entry key="JAVA" value="109" />
           <entry key="JSP" value="3" />
           <entry key="JavaScript" value="26" />
           <entry key="Less" value="1" />
@@ -65,7 +63,7 @@
           <entry key="dummy" value="52" />
           <entry key="html" value="115" />
           <entry key="java" value="7469" />
-          <entry key="js" value="2705" />
+          <entry key="js" value="2737" />
           <entry key="xml" value="51" />
         </counts>
       </usages-collector>
@@ -74,7 +72,7 @@
           <entry key="CSS" value="31" />
           <entry key="HTML" value="115" />
           <entry key="JAVA" value="7469" />
-          <entry key="JavaScript" value="2705" />
+          <entry key="JavaScript" value="2737" />
           <entry key="PLAIN_TEXT" value="52" />
           <entry key="XML" value="51" />
         </counts>
@@ -83,11 +81,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/script/boardPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="41" />
+            <state relative-caret-position="270">
+              <caret line="227" column="59" selection-start-line="227" selection-start-column="59" selection-end-line="227" selection-end-column="59" />
+              <folding>
+                <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameEngine/PlayerInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -104,14 +114,27 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/script/common.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="95">
-              <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+              <caret line="59" column="34" lean-forward="true" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameEngine/PlayerComputer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding>
+                <element signature="e#204#205#0" expanded="true" />
+                <element signature="e#245#246#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,24 +159,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-423">
-              <caret line="45" column="6" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/rooms.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="213">
@@ -165,8 +170,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameEngine/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="314" column="8" selection-start-line="314" selection-start-column="8" selection-end-line="319" selection-end-column="40" />
+            <state relative-caret-position="156">
+              <caret line="109" column="34" selection-start-line="109" selection-start-column="34" selection-end-line="109" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -194,8 +199,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>handlecomputer</find>
-      <find>autopl</find>
       <find>autoplay</find>
       <find>gamedetai</find>
       <find>winner</find>
@@ -224,6 +227,8 @@
       <find>updateboard</find>
       <find>function update</find>
       <find>black</find>
+      <find>userslist</find>
+      <find>colors</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -262,8 +267,8 @@
         <option value="$PROJECT_DIR$/web/rooms.html" />
         <option value="$PROJECT_DIR$/web/script/rooms.js" />
         <option value="$PROJECT_DIR$/src/GameEngine/Game.java" />
-        <option value="$PROJECT_DIR$/web/script/boardPage.js" />
         <option value="$PROJECT_DIR$/web/script/common.js" />
+        <option value="$PROJECT_DIR$/web/script/boardPage.js" />
       </list>
     </option>
   </component>
@@ -564,18 +569,18 @@
       <workItem from="1537539005353" duration="19707000" />
       <workItem from="1537688041551" duration="7814000" />
       <workItem from="1537703371269" duration="57129000" />
-      <workItem from="1538212552884" duration="17419000" />
+      <workItem from="1538212552884" duration="17722000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102069000" />
+    <option name="totallyTimeSpent" value="102372000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1537" height="912" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2585628" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2585628" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -585,7 +590,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3294979" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4072165" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4072165" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39948454" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -730,13 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameEngine/PlayerComputer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GameEngine/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -767,13 +765,6 @@
             <element signature="e#6196#6197#0" expanded="true" />
             <element signature="e#6909#6918#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameEngine/PlayerInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
@@ -995,30 +986,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/script/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="59" column="34" lean-forward="true" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameEngine/PlayerComputer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="e#204#205#0" expanded="true" />
+            <element signature="e#245#246#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GameEngine/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="314" column="8" selection-start-line="314" selection-start-column="8" selection-end-line="319" selection-end-column="40" />
+        <state relative-caret-position="156">
+          <caret line="109" column="34" selection-start-line="109" selection-start-column="34" selection-end-line="109" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/script/boardPage.js">
+    <entry file="file://$PROJECT_DIR$/src/GameEngine/PlayerInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="41" />
+        <state relative-caret-position="247">
+          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/script/common.js">
+    <entry file="file://$PROJECT_DIR$/web/script/boardPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+        <state relative-caret-position="270">
+          <caret line="227" column="59" selection-start-line="227" selection-start-column="59" selection-end-line="227" selection-end-column="59" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -141,16 +141,8 @@ public class Game {
         players.remove(player);
         roomInfo.decreaseOnlinePlayers();
         this.registrationBlocked = true;
-        if (this.getIsStarted()) {
+        if (this.getIsStarted() && player.getName().equals(this.getCurrentPlayer().getName())) {
             this.advanceToNextPlayer();
-//            Boolean isGameOver;
-//            while (this.getCurrentPlayer().getClass().getSimpleName().contains(PlayerManager.PlayerType.Computer.toString())){
-//                isGameOver = this.makeTurn();
-//                if (isGameOver){
-//                    return true;
-//                }
-//                this.advanceToNextPlayer();
-//            }
         }
         return false;
     }

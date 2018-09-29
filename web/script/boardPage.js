@@ -286,10 +286,6 @@
             url: gameURL,
             success: function (response) {
                 if (response.isActivePlayer && Cookies.get("playerType") != "Computer") {
-                    if(isReplayMode == false){ //remove disable only if not in replay
-                        $("#sidePanel *").removeClass('disabled').prop('disabled', false);
-                    }
-                    // updatePerfectBlock(response.rowsBlocks, response.columnsBlocks);
 
                     if (response.isGameOver) {
                         $("#mainControl *").addClass('disabled').prop('disabled', true);
@@ -300,6 +296,12 @@
                 }
                 else {
                     $("#controlPanel *").addClass('disabled').prop('disabled', true);
+                }
+
+                if (response.playerList.length == 1 && isGameStarted){
+                    isGameOver = true;
+                    alert("All other players left as chickens. You are the WINNER!");
+                    handleResetGame();
                 }
 
                 $("#username").text("Username: " + Cookies.get(organizer));

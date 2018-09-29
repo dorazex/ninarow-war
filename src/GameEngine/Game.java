@@ -51,6 +51,8 @@ public class Game {
     private boolean isGameOver;
     private boolean onePlayerReady = false;
 
+    private Stack<String> colorsList;
+
     public List<PlayerInfo> makePlayersList() {
 
         List<PlayerInfo> playersManagers = new ArrayList<>();
@@ -105,9 +107,9 @@ public class Game {
 
         PlayerCommon player;
         if (playerType == PlayerInfo.PlayerType.Computer){
-            player = new PlayerComputer(this.players.size(), organizer, "red");
+            player = new PlayerComputer(this.players.size(), organizer, this.colorsList.pop());
         } else{
-            player = new PlayerWeb(this.players.size(), organizer, "black");
+            player = new PlayerWeb(this.players.size(), organizer, this.colorsList.pop());
         }
 
         if(roomInfo.getOnlinePlayers() < roomInfo.getTotalPlayers() && !isStarted){
@@ -308,6 +310,14 @@ public class Game {
         this.players = new ArrayList<>();
         this.roomInfo.setColumns(this.board.getColumns());
         this.roomInfo.setRows(this.board.getRows());
+
+        this.colorsList = new Stack<>();
+        this.colorsList.push("#82b74b");
+        this.colorsList.push("#034f84");
+        this.colorsList.push("#6b5b95");
+        this.colorsList.push("#feb236");
+        this.colorsList.push("#d64161");
+        this.colorsList.push("#ff7b25");
 
     }
 

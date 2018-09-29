@@ -4,6 +4,7 @@ const playerType = "playerType";
 const requestType = "requestType";
 const roomsURL = "rooms";
 const gameURL = "game";
+const colors = ["#bebebe", "#82b74b", "#034f84", "#6b5b95", "#feb236", "#d64161", "#ff7b25"];
 
 function createPlayerIcon(usertype){
     if(usertype == "Human"){
@@ -56,7 +57,8 @@ function createBoard(board) {
                 console.log("column:" + column);
                 console.log("row:" + row);
             }
-            td.innerText = cells[column][row];
+            td.innerText = "\n\n";
+            td.setAttribute("style", "background:" + colors[parseInt(cells[column][row])])
             tr.appendChild(td);
         }
         table.append(tr);

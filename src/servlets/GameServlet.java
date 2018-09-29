@@ -92,19 +92,28 @@ public class GameServlet extends HttpServlet {
     }
 
     private void handleLeaveRoom(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Game game = getGame(request);
         Map<String, String> result = new HashMap<>();
         try {
-            Game game = getGame(request);
-            game.removePlayer(request.getParameter("organizer"));
+//            game.setAutoPlayInProgress(true);
+            Boolean isGameOver = game.removePlayer(request.getParameter("organizer"));
+            if (isGameOver){
+                String responseString = gson.toJson("... And the winner is: " + game.getWinnerPlayer().getName());
+                response.getWriter().write(responseString);
+//                game.setAutoPlayInProgress(false);
+                return;
+            }
         } catch (Exception e){
         }
         result.put("redirect", "rooms.html");
         String json = gson.toJson(result);
         response.getWriter().write(json);
+//        game.setAutoPlayInProgress(false);
     }
 
     private void handleTurn(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Game game = getGame(request);
+//        if (game.getAutoPlayInProgress()) return;
 
         Integer column = Integer.parseInt(request.getParameter("column"));
         String organizer = request.getParameter("organizer");
@@ -145,6 +154,7 @@ public class GameServlet extends HttpServlet {
 
     private void handleComputerTurn(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Game game = getGame(request);
+//        if (game.getAutoPlayInProgress()) return;
 
         String organizer = request.getParameter("organizer");
 

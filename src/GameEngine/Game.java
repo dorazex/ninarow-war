@@ -52,6 +52,7 @@ public class Game {
     private Date currentDate;
     private String variant;
     private Boolean registrationBlocked = false;
+    private Boolean autoPlayInProgress = false;
 
     private final RoomInfo roomInfo = new RoomInfo();
     private ExecutorService computerMoveExecutor;
@@ -84,6 +85,14 @@ public class Game {
             if (player.getName().equals(username)) break;
         }
         return index;
+    }
+
+    public Boolean getAutoPlayInProgress() {
+        return autoPlayInProgress;
+    }
+
+    public void setAutoPlayInProgress(Boolean autoPlayInProgress) {
+        this.autoPlayInProgress = autoPlayInProgress;
     }
 
     public Player getPlayer(String organizer) {
@@ -129,11 +138,20 @@ public class Game {
 
     public synchronized boolean removePlayer(String organizer) {
         Player player = this.getPlayer(organizer);
-        this.registrationBlocked = true;
-        this.advanceToNextPlayer();
         players.remove(player);
         roomInfo.decreaseOnlinePlayers();
-
+        this.registrationBlocked = true;
+        if (this.getIsStarted()) {
+            this.advanceToNextPlayer();
+//            Boolean isGameOver;
+//            while (this.getCurrentPlayer().getClass().getSimpleName().contains(PlayerManager.PlayerType.Computer.toString())){
+//                isGameOver = this.makeTurn();
+//                if (isGameOver){
+//                    return true;
+//                }
+//                this.advanceToNextPlayer();
+//            }
+        }
         return false;
     }
 

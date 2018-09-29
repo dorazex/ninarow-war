@@ -392,6 +392,8 @@
                     Cookies.remove(roomid);
                     Cookies.remove(spectator);
                     document.location.href = response.redirect;
+                } else {
+                    showMessage("Game Over", response, false);
                 }
             }
         });

@@ -1,6 +1,7 @@
 package GameEngine;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -186,6 +187,26 @@ public class Board {
             i++;
         }
         this.playersCount = players.size();
+    }
+
+    public void removePlayer(Integer playerId){
+        ArrayList<ArrayList<Integer>> newCells = new ArrayList<>();
+        for (int i = 0; i < this.columns; i++) {
+            ArrayList<Integer> column = this.cells.get(i);
+            ArrayList<Integer> newColumn = new ArrayList<Integer>();
+            for (int j = this.rows - 1; j >= 0 ; j--) {
+                if (!column.get(j).toString().equals(this.playersDiscTypeMap.get(playerId + 1))){
+                    newColumn.add(column.get(j));
+                }
+            }
+            int difference = this.rows - newColumn.size();
+            for (int k = 0; k < difference; k++) {
+                newColumn.add(0);
+            }
+            Collections.reverse(newColumn);
+            newCells.add(newColumn);
+        }
+        this.cells = newCells;
     }
 
 //    private Integer idToDigit(String playerId){

@@ -139,6 +139,7 @@ public class Game {
     public synchronized boolean removePlayer(String organizer) {
         Player player = this.getPlayer(organizer);
         players.remove(player);
+        board.removePlayer(player.getId());
         roomInfo.decreaseOnlinePlayers();
         this.registrationBlocked = true;
         if (this.getIsStarted() && player.getName().equals(this.getCurrentPlayer().getName())) {

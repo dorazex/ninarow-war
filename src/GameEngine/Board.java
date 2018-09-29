@@ -214,6 +214,13 @@ public class Board {
         return turnRecord;
     }
 
+    public void clear(){
+        this.playersDiscTypeMap = new HashMap<>();
+        this.playersDiscTypeMap.put(0, "_");
+        this.clearBoard();
+        this.playersCount = 0;
+    }
+
     @Override
     public String toString() {
         String boardString = "";

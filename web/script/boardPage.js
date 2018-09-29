@@ -92,7 +92,11 @@
                     },
                     url: gameURL,
                     success: function (result) {
-                        updateBoard(result);
+                        if ((typeof result) == "string"){
+                            showMessage("Invalid Action", result, true);
+                        } else {
+                            updateBoard(result);
+                        }
                     }
                 });
             }
@@ -346,6 +350,21 @@
 
 //region end game
 
+    function handleResetGame(){
+        $.ajax({
+            data: makeUserOptions("resetGame"),
+            url: gameURL,
+            success: function (response) {
+                isGameOver = true;
+                // sleepFor(4000);
+                // showMessage("Game Over", response);
+                // blinkTitleWithMessage("Game Over");
+                Cookies.remove(roomid);
+                document.location.href = "rooms.html";
+            }
+        });
+    }
+
     function handleGameOver() {
         $("#sidePanel *").addClass('disabled').prop('disabled', true);
         clearInterval(updateDetailsInterval);
@@ -354,9 +373,12 @@
             data: makeUserOptions("systemMessage"),
             url: gameURL,
             success: function (response) {
-                showMessage("Game Over", response);
-                blinkTitleWithMessage("Game Over");
                 isGameOver = true;
+                // showMessage("Game Over", response);
+                // blinkTitleWithMessage("Game Over");
+                // sleepFor(4000);
+                alert(response);
+                handleResetGame();
             }
         });
     }

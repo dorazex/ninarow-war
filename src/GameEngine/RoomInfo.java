@@ -25,6 +25,7 @@ public class RoomInfo {
 
     void clearInfo() {
         onlinePlayers = 0;
+        isStarted = false;
     }
 
     void setRoomIdentifier(int roomIdentifier) { this.roomIdentifier = roomIdentifier;}

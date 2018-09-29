@@ -9,6 +9,10 @@ public class History {
         this.turnRecords = new ArrayList<TurnRecord>();
     }
 
+    public void clear(){
+        this.turnRecords.clear();
+    }
+
     public void pushTurn(TurnRecord turnRecord){
         this.turnRecords.add(turnRecord);
     }

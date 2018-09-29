@@ -63,6 +63,9 @@ public class GameServlet extends HttpServlet {
             case Constants.NUM_OF_ALL_MOVES:
                 handlenNmOfAllMoves(request, response);
                 break;
+            case Constants.RESET_GAME:
+                handleResetGame(request, response);
+                break;
         }
     }
 
@@ -70,6 +73,13 @@ public class GameServlet extends HttpServlet {
     private void handlenNmOfAllMoves(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Game game = getGame(request);
         String responseString = gson.toJson(game.getTurnsCountOfUser(request.getParameter("organizer")));
+        response.getWriter().write(responseString);
+    }
+
+    private void handleResetGame(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Game game = getGame(request);
+        game.resetGame();
+        String responseString = gson.toJson("Redirecting to rooms page");
         response.getWriter().write(responseString);
     }
 
@@ -82,10 +92,12 @@ public class GameServlet extends HttpServlet {
     }
 
     private void handleLeaveRoom(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Game game = getGame(request);
-        game.removePlayer(request.getParameter("organizer"));
-
         Map<String, String> result = new HashMap<>();
+        try {
+            Game game = getGame(request);
+            game.removePlayer(request.getParameter("organizer"));
+        } catch (Exception e){
+        }
         result.put("redirect", "rooms.html");
         String json = gson.toJson(result);
         response.getWriter().write(json);
@@ -122,6 +134,7 @@ public class GameServlet extends HttpServlet {
         SimpleBoard responseBoard = new SimpleBoard(board.getCells(), board.getPlayersDiscTypeMap(), game.getVariant().equals("Popout"));
 
         String boardJson = gson.toJson(responseBoard);
+//        if (isGameOver) game.resetGame();
         PrintWriter out = response.getWriter();
         out.println(boardJson);
         out.flush();
@@ -154,6 +167,9 @@ public class GameServlet extends HttpServlet {
         SimpleBoard responseBoard = new SimpleBoard(board.getCells(), board.getPlayersDiscTypeMap(), game.getVariant().equals("Popout"));
 
         String boardJson = gson.toJson(responseBoard);
+
+//        if (isGameOver) game.resetGame();
+
         PrintWriter out = response.getWriter();
         out.println(boardJson);
         out.flush();

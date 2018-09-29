@@ -116,6 +116,7 @@ public class Game {
                 this.currentPlayerIndex = 0;
             }
             if(roomInfo.getOnlinePlayers() == roomInfo.getTotalPlayers()){
+                roomInfo.setStarted(true);
                 isStarted = true;
                 isGameOver = false;
             }
@@ -134,6 +135,10 @@ public class Game {
         roomInfo.decreaseOnlinePlayers();
 
         return false;
+    }
+
+    public Boolean getRegistrationBlocked() {
+        return registrationBlocked;
     }
 
     public boolean checkUniqueUser(String username) { //TODO test this works
@@ -203,15 +208,20 @@ public class Game {
 //        playAutoMoves(); // will play only if computer
     }
 
-    private void resetGame() {
-        isStarted= false;
-        isGameOver = false;
+    public void resetGame() {
+        roomInfo.setStarted(false);
+        isStarted = false;
         onePlayerReady = false;
         if(players != null) {
             players.clear();
         }
         currentPlayerIndex = 0;
+        registrationBlocked = false;
         roomInfo.clearInfo();
+        // history, board, duration, winner
+        this.history.clear();
+        this.board.clear();
+        isGameOver = false;
     }
 
 
@@ -336,6 +346,7 @@ public class Game {
         this.board.addPlayers(this.players);
 
         this.isStarted = true;
+        roomInfo.setStarted(true);
         this.startDate = new Date();
     }
 

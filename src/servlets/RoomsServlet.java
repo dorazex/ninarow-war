@@ -100,7 +100,11 @@ public class RoomsServlet extends HttpServlet {
 
         if(game.checkUniqueUser(username)){
             //user already exist, so can't register them, just let them go to their board
-            result.put("error", "You're already playing in this room.");
+            if (game.getIsStarted() && game.getRegistrationBlocked()) {
+                result.put("error", "You have already left the game: cannot re-enter");
+            } else {
+                result.put("error", "You are already in this game");
+            }
         }
         else {
             //user doesn't exist so register them
@@ -130,6 +134,8 @@ public class RoomsServlet extends HttpServlet {
         if(roomsManager == null){
             roomsManager = ServletUtils.getRoomsManager(getServletContext());
         }
+
+
         String playerListJson = gson.toJson(roomsManager.getRoomList());
         out.println(playerListJson);
         out.flush();

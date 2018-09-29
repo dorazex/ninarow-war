@@ -17,6 +17,7 @@ public class Constants {
     static final String TURN = "turn";
     static final String COMPUTER_TURN = "computerTurn";
     static final String CHECK_GAME_START = "checkGameStart";
+    static final String RESET_GAME = "resetGame";
     static final String SYSTEM_MESSAGE = "systemMessage";
     static final String LEAVE_ROOM = "leaveRoom";
     static final String RESET_TO_LAST_MOVE = "resetToLastMove";

@@ -6,9 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32da28f5-b461-4b69-95e5-e69c2628b2ba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/web/script/boardPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/script/boardPage.js" afterDir="false" />
-    </list>
+    <list default="true" id="32da28f5-b461-4b69-95e5-e69c2628b2ba" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,9 +82,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/script/boardPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="227" column="59" selection-start-line="227" selection-start-column="59" selection-end-line="227" selection-end-column="59" />
+            <state relative-caret-position="42">
+              <caret line="215" column="32" lean-forward="true" selection-start-line="215" selection-start-column="32" selection-end-line="215" selection-end-column="32" />
               <folding>
+                <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -569,18 +568,18 @@
       <workItem from="1537539005353" duration="19707000" />
       <workItem from="1537688041551" duration="7814000" />
       <workItem from="1537703371269" duration="57129000" />
-      <workItem from="1538212552884" duration="17722000" />
+      <workItem from="1538212552884" duration="18017000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102372000" />
+    <option name="totallyTimeSpent" value="102667000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1537" height="912" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2585628" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2585628" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -590,7 +589,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3294979" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4072165" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4072165" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39948454" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1027,9 +1026,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/script/boardPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="227" column="59" selection-start-line="227" selection-start-column="59" selection-end-line="227" selection-end-column="59" />
+        <state relative-caret-position="42">
+          <caret line="215" column="32" lean-forward="true" selection-start-line="215" selection-start-column="32" selection-end-line="215" selection-end-column="32" />
           <folding>
+            <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
           </folding>
         </state>

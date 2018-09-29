@@ -16,7 +16,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 </head>
 <body>
-<!-- Where all the magic happens -->
 <!-- LOGIN FORM -->
 <div id="wrap">
     <div align="center" class="text-center container" id="main" style="padding:50px 0;">
@@ -34,10 +33,6 @@
                                 <option value="Human">Human</option>
                                 <option value="Computer">Computer</option>
                             </select>
-                        </div>
-                        <div class="form-group login-group-checkbox">
-                            <input type="checkbox" id="lg_remember" name="loggedin">
-                            <label for="lg_remember">Already logged in?</label>
                         </div>
                     </div>
                     <button type="submit" value="Login" class="login-button"><i class="fa fa-chevron-right"
@@ -57,19 +52,6 @@
         </div>
     </div>
 </div>
-<!--footer-->
-<footer class="footer elegant-color-dark" id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <div class="col-xs-5">
-                    <p class="text-muted">By Sela Oren and Moran Mahabi 2016</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!--footer end-->
 </body>
 </html>
 

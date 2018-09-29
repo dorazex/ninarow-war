@@ -164,7 +164,7 @@ public class GameServlet extends HttpServlet {
     private void handleCheckGameStart(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Game game = getGame(request);
         Pair<Boolean, List<PlayerInfo>> result;
-        result = new Pair<>(game.getGameRunning(), game.makePlayerAndSpectatorList());
+        result = new Pair<>(game.getGameRunning(), game.makePlayersList());
         String responseString = gson.toJson(result);
         response.getWriter().write(responseString);
     }

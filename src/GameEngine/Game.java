@@ -25,7 +25,7 @@ public class Game {
 
             turnsCount = game.getCurrentPlayer().getTurnsCount();
             currentPlayerName = game.getCurrentPlayer().getName();
-            playerList = game.makePlayerAndSpectatorList();
+            playerList = game.makePlayersList();
 
             isGameOver = game.isGameOver;
         }
@@ -51,7 +51,7 @@ public class Game {
     private boolean isGameOver;
     private boolean onePlayerReady = false;
 
-    public List<PlayerInfo> makePlayerAndSpectatorList() {
+    public List<PlayerInfo> makePlayersList() {
 
         List<PlayerInfo> playersManagers = new ArrayList<>();
         for (Player player :

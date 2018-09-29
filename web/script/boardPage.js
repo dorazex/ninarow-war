@@ -16,19 +16,10 @@
     });
 
     function makeUserOptions(requestType) {
-        if (Cookies.get(spectator)) {
-            return {
-                requestType: requestType,
-                roomid: currentRoomId,
-                spectator: true
-            }
-        }
-        else {
-            return {
-                requestType: requestType,
-                roomid: currentRoomId,
-                organizer: Cookies.get(organizer)
-            }
+        return {
+            requestType: requestType,
+            roomid: currentRoomId,
+            organizer: Cookies.get(organizer)
         }
     }
 
@@ -152,7 +143,7 @@
                     clearInterval(checkGameStartInterval);
 
                     ajaxUpdateBoardInterval = setInterval(ajaxUpdateBoard, refreshRate);
-                    updateDetailsInterval = setInterval(updateDetails, refreshRate);    // relevant to player, not spectator
+                    updateDetailsInterval = setInterval(updateDetails, refreshRate);
                 } else {
                     ajaxUpdateBoardInterval = setInterval(ajaxUpdateBoard, refreshRate);
                 }

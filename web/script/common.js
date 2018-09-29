@@ -1,9 +1,4 @@
-/**
- * Created by s on 18/10/2016.
- */
-
 const organizer = "organizer";
-const spectator = "spectator";
 const roomid = "roomid";
 const playerType = "playerType";
 const requestType = "requestType";
@@ -57,7 +52,7 @@ function createBoard(board) {
         for (var column = 0; column < columnsCount; column++) {
             var td = document.createElement('td');
             td.classList.add("block");
-            if (cells[column][row] == undefined){
+            if (cells[column][row] === undefined){
                 console.log("column:" + column);
                 console.log("row:" + row);
             }
@@ -67,7 +62,7 @@ function createBoard(board) {
         table.append(tr);
     }
 
-    if (board.isPopOut == true) {
+    if (board.isPopOut === true) {
         // create bottom buttons
         var tr = document.createElement('tr');
         for (var column = 0; column < columnsCount; column++) {
@@ -91,20 +86,3 @@ function createBoard(board) {
     }
 
 }
-
-
-function getMaxLengthOfList(list) {
-    var retValue = 0;
-    for (var i = 0; i < list.length; i++) {
-        if (list[i].length > retValue) {
-            retValue = list[i].length;
-        }
-    }
-    return retValue;
-}
-
-function sleepFor( sleepDuration ){
-    var now = new Date().getTime();
-    while(new Date().getTime() < now + sleepDuration){ /* do nothing */ }
-}
-

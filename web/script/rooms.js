@@ -1,32 +1,25 @@
 (function () {
-//region polling
 
-    var refreshRate = 1000; //miliseconds
+    var refreshRate = 1000;
 
-    function refreshUsersList(users) {  //TODO change this to app/json
-
+    function refreshUsersList(users) {
         //clear all current users
         $("#userslist").empty();
         $.each(users || [], function (index, element) {
 
             $('<tr>' +
-                '<td align="center">' + createPlayerIcon(element.playerType) + '</td>' + //TODO make icons
+                '<td align="center">' + createPlayerIcon(element.playerType) + '</td>' +
                 '<td>' + element.name + '</td>' +
                 '</tr>').appendTo($("#userslist"));
         });
     }
 
     function refreshRoomsList(rooms) {
-
-
-
-
         var selected = $("#roomslist").find("tr.info").attr('id');
         //clear all current rooms
         $("#roomslist").empty();
 
         $.each(rooms || [], function (index, element) {
-
             $('<tr id=' + element.roomIdentifier + '>' +
                 '<td>' + element.gameTitle + '</td>' +
                 '<td>' + element.organizer + '</td>' +
@@ -37,7 +30,7 @@
                 '<td>' + element.isStarted + '</td>' +
                 '</tr>').appendTo($("#roomslist"));
 
-            if (element.roomIdentifier == selected) {
+            if (element.roomIdentifier === selected) {
                 $('#' + selected.toString()).addClass('info');
             }
         });
@@ -54,7 +47,7 @@
                 if (textStatus === "timeout") {
                     showMessage("Timeout", "No connection", true);
                 }
-                else if (XMLHttpRequest.readyState == 0) {
+                else if (XMLHttpRequest.readyState === 0) {
                     showErrorModal("Lost connection with server");
                 }
             },
@@ -73,7 +66,7 @@
                 if (textStatus === "timeout") {
                     showMessage("Timeout", "No connection", true);
                 }
-                else if (XMLHttpRequest.readyState == 0) {
+                else if (XMLHttpRequest.readyState === 0) {
                     showErrorModal("Lost connection with server");
                 }
             },
@@ -91,9 +84,6 @@
         setInterval(refreshPageData, refreshRate);
     });
 
-//endregion
-
-//region buttons
 
 // click button to enter a room
     $(document).on("click", "#enterRoom", function (e) {
@@ -110,7 +100,6 @@
                 url: roomsURL,
                 success: function (responseJson) {  //change to board page
                     if (typeof responseJson.redirect !== "undefined") {
-                        Cookies.remove("spectator");
                         document.location.href = responseJson.redirect;
                     }
                     else if (typeof responseJson.error !== "undefined") {
@@ -158,36 +147,10 @@
                 if (typeof response.redirect !== "undefined") {
                     Cookies.remove(organizer);
                     Cookies.remove(playerType);
-                    // Cookies.remove(organizer, {path: window.location.pathname.split( '/' )[1]});
-                    // Cookies.remove(playerType, {path: window.location.pathname.split( '/' )[1]});
                     document.location.href = response.redirect;
                 }
             }
         });
-    });
-
-    $(document).on("click", "#spectateRoom", function (e) {
-        var selected = $("#roomslist").find("tr.info");
-        if (selected) {
-            selected = $("#roomslist").find("tr.info").attr('id');
-            $.ajax({
-                data: {
-                    spectator: Cookies.get(organizer),
-                    requestType: "spectateRoom",
-                    roomid: selected
-                },
-                url: roomsURL,
-                success: function (response) {
-                    //open a window with the board
-                    if (typeof response.redirect !== "undefined") {
-                        document.location.href = response.redirect;
-                    }
-                    else if (response.error) {
-                        showErrorModal(response.error);
-                    }
-                }
-            });
-        }
     });
 
     $(document).on("click", "#viewBoard", function (e) {
@@ -210,8 +173,6 @@
             });
         }
     });
-
-//endregion
 
     function showErrorModal(message) {
         $('#errorMessage').text(message);

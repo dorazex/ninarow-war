@@ -98,13 +98,13 @@ public class RoomsServlet extends HttpServlet {
 
         String username = request.getParameter("organizer");
 
-        if(game.checkUniqueUser(request.getParameter("organizer"))){
+        if(game.checkUniqueUser(username)){
             //user already exist, so can't register them, just let them go to their board
             result.put("error", "You're already playing in this room.");
         }
         else {
             //user doesn't exist so register them
-            if (game.addPlayer(request.getParameter("organizer"), PlayerManager.PlayerType.valueOf(request.getParameter("playerType")))) {
+            if (game.addPlayer(username, PlayerManager.PlayerType.valueOf(request.getParameter("playerType")))) {
                 // room isn't full
                 result.put("redirect", "boardPage.html");
                 Cookie roomIdCookie = new Cookie("roomid", Integer.toString(roomid));

@@ -83,6 +83,7 @@ public class GameServlet extends HttpServlet {
 
     private void handleLeaveRoom(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Game game = getGame(request);
+        game.removePlayer(request.getParameter("organizer"));
 
         Map<String, String> result = new HashMap<>();
         result.put("redirect", "rooms.html");

@@ -51,6 +51,7 @@ public class Game {
     private SimpleStringProperty duration;
     private Date currentDate;
     private String variant;
+    private Boolean registrationBlocked = false;
 
     private final RoomInfo roomInfo = new RoomInfo();
     private ExecutorService computerMoveExecutor;
@@ -99,6 +100,8 @@ public class Game {
     }
 
     public synchronized boolean addPlayer(String organizer, PlayerManager.PlayerType playerType) {
+        if (this.registrationBlocked) return false;
+
         PlayerCommon player;
         if (playerType == PlayerManager.PlayerType.Computer){
             player = new PlayerComputer(this.players.size(), organizer, "red");
@@ -119,6 +122,16 @@ public class Game {
 
             return true;
         }
+
+        return false;
+    }
+
+    public synchronized boolean removePlayer(String organizer) {
+        Player player = this.getPlayer(organizer);
+        this.registrationBlocked = true;
+        this.advanceToNextPlayer();
+        players.remove(player);
+        roomInfo.decreaseOnlinePlayers();
 
         return false;
     }

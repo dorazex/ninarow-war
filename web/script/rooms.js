@@ -30,7 +30,7 @@
                 '<td>' + element.isStarted + '</td>' +
                 '</tr>').appendTo($("#roomslist"));
 
-            if (element.roomIdentifier === selected) {
+            if (element.roomIdentifier == selected) {
                 $('#' + selected.toString()).addClass('info');
             }
         });

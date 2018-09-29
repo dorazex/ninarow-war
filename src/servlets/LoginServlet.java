@@ -1,6 +1,6 @@
 package servlets;
 
-import GameEngine.PlayerManager;
+import GameEngine.PlayerInfo;
 import GameEngine.RoomsManager;
 import servlets.utils.*;
 import javax.servlet.ServletException;
@@ -17,15 +17,7 @@ import java.util.Objects;
 public class LoginServlet extends HttpServlet {
 
     private RoomsManager roomsManager;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -33,7 +25,7 @@ public class LoginServlet extends HttpServlet {
         String usernameFromSession = SessionUtils.getUsernameFromSession(request);
         roomsManager = ServletUtils.getRoomsManager(getServletContext());
 
-        PlayerManager.PlayerType playerTypeFromParameter = PlayerManager.PlayerType.valueOf(request.getParameter(Constants.USERTYPE));
+        PlayerInfo.PlayerType playerTypeFromParameter = PlayerInfo.PlayerType.valueOf(request.getParameter(Constants.USERTYPE));
 
         if (usernameFromSession == null) {
             String usernameFromParameter = request.getParameter(Constants.USERNAME);
@@ -78,7 +70,7 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
-    private void handleLoginAttributes(HttpServletRequest request, HttpServletResponse response, PlayerManager.PlayerType playerTypeFromParameter, String usernameFromParameter) throws IOException {
+    private void handleLoginAttributes(HttpServletRequest request, HttpServletResponse response, PlayerInfo.PlayerType playerTypeFromParameter, String usernameFromParameter) throws IOException {
         //add the new user to the users list
         String playerType = request.getParameter(Constants.USERTYPE);
         request.getSession(true).setAttribute(Constants.USERNAME, usernameFromParameter);
@@ -92,40 +84,18 @@ public class LoginServlet extends HttpServlet {
         response.sendRedirect("rooms.html");
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

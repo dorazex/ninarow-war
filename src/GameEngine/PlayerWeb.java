@@ -18,18 +18,8 @@ public class PlayerWeb extends PlayerCommon {
         throw new NotImplementedException();
     }
 
-    public TurnRecord makeTurnFX(Board board, Integer column, Boolean isBottom) {
-        TurnRecord turnRecord;
-        if (!isBottom) {
-            turnRecord = board.putDisc(this, column);
-        } else {
-            turnRecord = board.popOut(this, column);
-        }
-        return turnRecord;
-    }
-
     @Override
     public String toString() {
-        return String.format("%s%s", "Human\t\t", super.toString());
+        return String.format("%s%s", "Web\t\t", super.toString());
     }
 }

@@ -1,7 +1,3 @@
-/**
- * Created by moran on 10/13/2016.
- */
-
 (function () {
 
     var refreshRate = 1000; //miliseconds
@@ -10,16 +6,10 @@
     var ajaxUpdateBoardInterval;
     var titleIdInterval;
     var isGameOver = false;
-    var reviewOffset = 0;
-    var isReplayMode = false;
-    var currentRoomId;  // this enables for the same session to be in different rooms
+    var currentRoomId;
     var isGameStarted = false;
     var currentPlayerName;
 
-    function Coordinate(row, column) {
-        this.key = row;
-        this.value = column;
-    }
 
     $(document).ready(function () { //DO NOT MOVE THIS FUNCTION
         currentRoomId = Cookies.get(roomid);
@@ -39,19 +29,6 @@
                 roomid: currentRoomId,
                 organizer: Cookies.get(organizer)
             }
-        }
-    }
-
-//region board
-
-    function expandPageWidthAccordingToBoard(width) {
-
-        var widthOfBlock = $(".block").width() + 2;
-        var actualWidthOfBoard = widthOfBlock * width;
-        var widthOfControl = $("#controlPanel").width();
-
-        if (actualWidthOfBoard + widthOfControl > 970) {
-            $(".container").css("width", "100%");    //increase the size of all the containers for a larger board
         }
     }
 
@@ -83,7 +60,7 @@
 
         var requestingPlayerName = Cookies.get(organizer);
         if (isGameStarted) {
-            if (currentPlayerName == requestingPlayerName && Cookies.get(playerType) == "Computer") {
+            if (currentPlayerName === requestingPlayerName && Cookies.get(playerType) === "Computer") {
                 $.ajax({
                     data: {
                         requestType: "computerTurn",
@@ -92,7 +69,7 @@
                     },
                     url: gameURL,
                     success: function (result) {
-                        if ((typeof result) == "string"){
+                        if ((typeof result) === "string"){
                             showMessage("Invalid Action", result, true);
                         } else {
                             updateBoard(result);
@@ -103,18 +80,12 @@
 
     }}
 
-    // $(document).on("click", "td.toggler", function () {
-    //     $(this).toggleClass('selected');
-    // });
-
     $(document).ready(function ajaxBoard() {
-
         $.ajax({
             data: makeUserOptions("board"),
             url: gameURL,
             success: function (board) {
                 createBoard(board);
-                // expandPageWidthAccordingToBoard(board.board[0].length + getMaxLengthOfList(board.rowsBlocks));
 
                 for (var column = 0; column < board.columnsCount; column++) {
                     $(document).on("click", "#top-btn-" + column, function (e) {
@@ -133,14 +104,10 @@
         });
     });
 
-//endregion
-
-//region game controls
-
     function doMove(column, isPopOut) {
         var requestingPlayerName = Cookies.get(organizer);
         if (isGameStarted) {
-            if (currentPlayerName == requestingPlayerName) {
+            if (currentPlayerName === requestingPlayerName) {
                 $.ajax({
                     data: {
                         requestType: "turn",
@@ -151,7 +118,7 @@
                     },
                     url: gameURL,
                     success: function (result) {
-                        if ((typeof result) == "string"){
+                        if ((typeof result) === "string"){
                             showMessage("Invalid Action", result, true);
                         } else {
                             updateBoard(result);
@@ -167,78 +134,9 @@
         }
     }
 
-
-    function handleUndoRedo(undoOrRedo) {
-        removeSelectedSquares();
-
-        $.ajax({
-            data: makeUserOptions(undoOrRedo),
-            url: gameURL,
-            success: function (response) {
-                var moves = response;
-                var lenMoves = moves.length;
-                for (i = 0; i < lenMoves; i++) {
-                    var sign = moves[i].third;
-                    var td = $('[row="' + moves[i].first + '"][column="' + moves[i].second + '"]');
-                    td.removeClass(td.attr('class').split(' ').pop());
-                    td.addClass(moves[i].third.toLowerCase());
-                }
-            }
-        });
-    }
-
-    function removeSelectedSquares() {
-        $("#board").find("td.toggler.selected").each(function () {
-            $(this).toggleClass('selected');
-        });
-    }
-
-    function doTurnDone(move) {
-
-        $.ajax({
-            data: makeUserOptions("turnDone"),
-            url: gameURL,
-            success: function (response) {
-                if (response.isSuccessful) {
-                    $("#controlPanel *").addClass('disabled').prop('disabled', true);
-                    removeSelectedSquares();
-                }
-            }
-        });
-    }
-
-    $(document).on("click", "#undo", function (e) {
-        handleUndoRedo("undo");
-    });
-
-    $(document).on("click", "#redo", function (e) {
-        handleUndoRedo("redo");
-    });
-
-    $(document).on("click", "#empty", function (e) {
-        doMove("empty");
-    });
-
-    $(document).on("click", "#filled", function (e) {
-
-        doMove("filled");
-    });
-
-    $(document).on("click", "#unknown", function (e) {
-        doMove("unknown");
-    });
-
-    $(document).on("click", "#turnDone", function (e) {
-        doTurnDone("unknown");
-    });
-
     $(document).ready(function () {
         $("#sidePanel *").addClass('disabled').prop('disabled', true);
     });
-
-//endregion
-
-//region polling
 
     function checkIfGameStarted() {
         $.ajax({
@@ -248,14 +146,11 @@
                 updatePlayerList(response.second);
                 isGameStarted = response.first;
                 if (isGameStarted) { //if started
-                    showMessage("Nonogram", "Game started");
+                    showMessage("Ninarow", "Game started");
                     $("#sidePanel *").removeClass('disabled').prop('disabled', false);
                     blinkTitleWithMessage("Game started");
                     clearInterval(checkGameStartInterval);
 
-                    // if (Cookies.get("playerType") == "Computer") {
-                    //     ajaxUpdateBoardInterval = setInterval(ajaxUpdateBoard, refreshRate);
-                    // }
                     ajaxUpdateBoardInterval = setInterval(ajaxUpdateBoard, refreshRate);
                     updateDetailsInterval = setInterval(updateDetails, refreshRate);    // relevant to player, not spectator
                 } else {
@@ -266,8 +161,7 @@
                 if (textStatus === "timeout") {
                     showMessage("Timeout", "No connection", true);
                 }
-                else if (XMLHttpRequest.readyState == 0) {
-                    // showMessage("Error", "Lost connection with server", true);
+                else if (XMLHttpRequest.readyState === 0) {
                 }
             },
             timeout: 10000
@@ -285,7 +179,7 @@
             data: makeUserOptions("gameDetails"),
             url: gameURL,
             success: function (response) {
-                if (response.isActivePlayer && Cookies.get("playerType") != "Computer") {
+                if (response.isActivePlayer && Cookies.get("playerType") !== "Computer") {
 
                     if (response.isGameOver) {
                         $("#mainControl *").addClass('disabled').prop('disabled', true);
@@ -298,7 +192,7 @@
                     $("#controlPanel *").addClass('disabled').prop('disabled', true);
                 }
 
-                if (response.playerList.length == 1 && isGameStarted){
+                if (response.playerList.length === 1 && isGameStarted){
                     isGameOver = true;
                     alert("All other players left as chickens. You are the WINNER!");
                     handleResetGame();
@@ -319,8 +213,7 @@
                 if (textStatus === "timeout") {
                     showMessage("Timeout", "No connection", true);
                 }
-                else if (XMLHttpRequest.readyState == 0) {
-                    // showMessage("Error", "Lost connection with server", true);
+                else if (XMLHttpRequest.readyState === 0) {
                 }
             },
             timeout: 10000
@@ -328,12 +221,10 @@
     }
 
     function updatePlayerList(playerList) {
-        //g(playerList);
         $("#userslist").empty();
         $.each(playerList || [], function (index, element) {
-            // console.log(element.first);
             var currIndicator = "";
-            if (element.name == currentPlayerName){
+            if (element.name === currentPlayerName){
                 currIndicator = ">";
             }
 
@@ -344,13 +235,8 @@
                 '<td>' + element.turnsCount + '</td>' +
                 '<td>' + element.discType + '</td>' +
                 '</tr>').appendTo($("#userslist"));
-
         });
     }
-
-//endregion
-
-//region end game
 
     function handleResetGame(){
         $.ajax({
@@ -358,9 +244,6 @@
             url: gameURL,
             success: function (response) {
                 isGameOver = true;
-                // sleepFor(4000);
-                // showMessage("Game Over", response);
-                // blinkTitleWithMessage("Game Over");
                 Cookies.remove(roomid);
                 document.location.href = "rooms.html";
             }
@@ -376,9 +259,6 @@
             url: gameURL,
             success: function (response) {
                 isGameOver = true;
-                // showMessage("Game Over", response);
-                // blinkTitleWithMessage("Game Over");
-                // sleepFor(4000);
                 alert(response);
                 handleResetGame();
             }
@@ -392,7 +272,6 @@
             success: function (response) {
                 if (typeof response.redirect !== "undefined") {
                     Cookies.remove(roomid);
-                    Cookies.remove(spectator);
                     document.location.href = response.redirect;
                 } else {
                     showMessage("Game Over", response, false);
@@ -401,9 +280,6 @@
         });
     });
 
-//endregion
-
-//region ui related
     function showMessage(title, message, isError) {
 
         if (isError) {
@@ -438,96 +314,5 @@
         titleIdInterval = setInterval(blink, 1000);
         window.onmousemove = clear;
     }
-
-//endregion
-
-//region replay related
-
-    $(document).on("click", "#replay", function (e) {
-        $(this).toggleClass('info');
-        removeSelectedSquares();
-        if ($('#replay').hasClass('info')) {
-            isReplayMode = true;
-            $("#controlPanel *").addClass('disabled').prop('disabled', true);
-            $('#replay').text("Return");
-            document.getElementById("previous").style.visibility = "visible";
-            document.getElementById("next").style.visibility = "visible";
-            $("#next").addClass('disabled').prop('disabled', true);
-            decideDisableNextOrPrevButtons();
-        }
-        else {
-           restoreBoardAfterReplay();
-        }
-    });
-
-    function restoreBoardAfterReplay() {
-        isReplayMode = false;
-        $('#replay').text("Replay");
-        document.getElementById("previous").style.visibility = "hidden";
-        document.getElementById("next").style.visibility = "hidden";
-        $("#previous").removeClass('disabled').prop('disabled', false);
-        $("#next").removeClass('disabled').prop('disabled', false);
-        $.ajax({
-            data: {
-                requestType: "resetToLastMove",
-                roomid: currentRoomId,
-                organizer: Cookies.get(organizer),
-                "reviewOffset": reviewOffset
-            },
-            url: gameURL,
-            success: function () {
-                ajaxUpdateBoard();
-                reviewOffset = 0;
-            }
-        });
-    }
-
-    function decideDisableNextOrPrevButtons() {
-        $.ajax({
-            data: makeUserOptions("numOfAllMoves"),
-            url: gameURL,
-            success: function (response) {
-                if (response == 0)
-                    $("#previous").addClass('disabled').prop('disabled', true);
-                else
-                    $("#previous").removeClass('disabled').prop('disabled', false);
-                $("#next").addClass('disabled').prop('disabled', true);
-            }
-        });
-    }
-
-    $(document).on("click", "#previous", function (e) {
-        ajaxMoveWithoutChangeState("undoMoveWithoutChangeState");
-        reviewOffset--;
-        $.ajax({
-            data: makeUserOptions("numOfAllMoves"),
-            url: gameURL,
-            success: function (response) {
-                if (response + reviewOffset == 0)
-                    $("#previous").addClass('disabled').prop('disabled', true);
-                $("#next").removeClass('disabled').prop('disabled', false);
-            }
-        });
-    });
-
-    $(document).on("click", "#next", function (e) {
-        ajaxMoveWithoutChangeState("redoMoveWithoutChangeState");
-        reviewOffset++;
-        if (reviewOffset == 0)
-            $("#next").addClass('disabled').prop('disabled', true);
-        $("#previous").removeClass('disabled').prop('disabled', false);
-    });
-
-    function ajaxMoveWithoutChangeState(move) {
-        $.ajax({
-            data: makeUserOptions(move),
-            url: gameURL,
-            success: function () {
-                ajaxUpdateBoard();
-            }
-        });
-    }
-
-//endregion
 
 }());

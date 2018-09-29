@@ -1,17 +1,9 @@
 package GameEngine;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
-import sun.java2d.pipe.SpanShapeRenderer;
 
 import java.util.*;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Game {
 
@@ -22,7 +14,7 @@ public class Game {
         private boolean isActivePlayer = false;
         private String currentPlayerName;
         private int turnsCount; //relevant only to current player
-        private List<PlayerManager> playerList; //player type, name, score of player
+        private List<PlayerInfo> playerList; //player type, name, score of player
         private boolean isGameOver;
 
         GameDetails(Game game, String username){
@@ -59,19 +51,19 @@ public class Game {
     private boolean isGameOver;
     private boolean onePlayerReady = false;
 
-    public List<PlayerManager> makePlayerAndSpectatorList() {
+    public List<PlayerInfo> makePlayerAndSpectatorList() {
 
-        List<PlayerManager> playersManagers = new ArrayList<>();
+        List<PlayerInfo> playersManagers = new ArrayList<>();
         for (Player player :
                 this.players) {
-            PlayerManager.PlayerType playerType;
+            PlayerInfo.PlayerType playerType;
             if (player.getClass().getSimpleName().contains("Computer")){
-                playerType = PlayerManager.PlayerType.Computer;
+                playerType = PlayerInfo.PlayerType.Computer;
             } else {
-                playerType = PlayerManager.PlayerType.Human;
+                playerType = PlayerInfo.PlayerType.Human;
             }
-            PlayerManager playerManager = new PlayerManager(player.getName(), getBoard(), playerType, player.getDiscType(), player.getTurnsCount());
-            playersManagers.add(playerManager);
+            PlayerInfo playerInfo = new PlayerInfo(player.getName(), getBoard(), playerType, player.getDiscType(), player.getTurnsCount());
+            playersManagers.add(playerInfo);
         }
         this.board.addPlayers(this.players);
 
@@ -108,11 +100,11 @@ public class Game {
         this.players.remove(indexOfUserName);
     }
 
-    public synchronized boolean addPlayer(String organizer, PlayerManager.PlayerType playerType) {
+    public synchronized boolean addPlayer(String organizer, PlayerInfo.PlayerType playerType) {
         if (this.registrationBlocked) return false;
 
         PlayerCommon player;
-        if (playerType == PlayerManager.PlayerType.Computer){
+        if (playerType == PlayerInfo.PlayerType.Computer){
             player = new PlayerComputer(this.players.size(), organizer, "red");
         } else{
             player = new PlayerWeb(this.players.size(), organizer, "black");
@@ -241,7 +233,7 @@ public class Game {
     }
 
     public void onePlayerReady(){
-        if (isStarted && this.getCurrentPlayer().getClass().getSimpleName().equals(PlayerManager.PlayerType.Computer.toString())
+        if (isStarted && this.getCurrentPlayer().getClass().getSimpleName().equals(PlayerInfo.PlayerType.Computer.toString())
                 && !this.onePlayerReady){
 //            playAutoMoves();    // start the game in case first player is computer
         }

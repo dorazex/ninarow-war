@@ -7,20 +7,20 @@ import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/**
- * Created by moran on 9/30/2016.
- */
 @WebListener
 public class RoomsManager implements ServletContextListener {
 
     private final Map<Integer, Game> games = new HashMap<>();
     private final List<SimplePlayer> onlinePlayers = new ArrayList<>();
-    private final List<RoomInfo> roomList = new LinkedList<>(); //simplified game manager for converting to json
+    private final List<RoomInfo> roomList = new LinkedList<>();
     private int count = 0;
-
-    // will run the computer move one after the other
-    // to prevent recursive calls if all players are computer
     private ExecutorService computerMoveExecutor = Executors.newSingleThreadExecutor();
+
+    public List<SimplePlayer> getPlayerList() { return onlinePlayers;}
+    public List<RoomInfo> getRoomList() {
+        return roomList;
+    }
+    public Map<Integer, Game> getGames() {return games;}
 
     public boolean isPlayerExists(String name) {
         for (SimplePlayer player : onlinePlayers) {
@@ -29,19 +29,12 @@ public class RoomsManager implements ServletContextListener {
         }
         return false;
     }
-
-    public boolean isPlayerExists(String name, PlayerManager.PlayerType type) {
+    public boolean isPlayerExists(String name, PlayerInfo.PlayerType type) {
         for (SimplePlayer player : onlinePlayers) {
             if(player.getName().equals(name) && player.getPlayerType() == type)
                 return true;
         }
         return false;
-    }
-
-    public Map<Integer, Game> getGames() {return games;}
-
-    public void addPlayer(String name, PlayerManager.PlayerType playerType) {
-        onlinePlayers.add(new SimplePlayer(name, playerType));
     }
 
     public synchronized void addGame(Game game) {
@@ -52,19 +45,12 @@ public class RoomsManager implements ServletContextListener {
         game.getRoomInfo().setRoomIdentifier(count);
     }
 
-    public List<SimplePlayer> getPlayerList() { return onlinePlayers;}
-
-    public List<RoomInfo> getRoomList() {
-        return roomList;
+    public void addPlayer(String name, PlayerInfo.PlayerType playerType) {
+        onlinePlayers.add(new SimplePlayer(name, playerType));
     }
 
     public void removePlayer(String organizer) {
-        Iterator<SimplePlayer> it = onlinePlayers.iterator();
-        while (it.hasNext()){
-            if(Objects.equals(it.next().getName(), organizer)){
-                it.remove();
-            }
-        }
+        onlinePlayers.removeIf(simplePlayer -> Objects.equals(simplePlayer.getName(), organizer));
     }
 
     @Override

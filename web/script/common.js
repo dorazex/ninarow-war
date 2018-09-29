@@ -22,7 +22,6 @@ function createPlayerIcon(usertype){
 function createBoard(board) {
     var table = $("#board");
     table.addClass("board");
-    console.log(table);
     var tableWidth = parseInt(table.width());
     var cells = board.cells;
 

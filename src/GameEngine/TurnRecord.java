@@ -8,11 +8,9 @@ public class TurnRecord {
     public Player getPlayer() {
         return player;
     }
-
     public Integer getColumn() {
         return column;
     }
-
     public Boolean getPopOut() { return isPopOut; }
 
     public TurnRecord(Player player, Integer column, Boolean isPopOut){
@@ -24,11 +22,11 @@ public class TurnRecord {
     @Override
     public String toString() {
         if (!this.isPopOut)
-            return String.format("GameEngine.Player <%s> have put a disc of type <%s> at column <%d>",
+            return String.format("Player <%s> have put a disc of type <%s> at column <%d>",
                     this.player.getId(),
                     this.player.getDiscType(),
                     this.column);
-        return String.format("GameEngine.Player <%s> have popped out a disc of type <%s> at column <%d>",
+        return String.format("Player <%s> have popped out a disc of type <%s> at column <%d>",
                 this.player.getId(),
                 this.player.getDiscType(),
                 this.column);

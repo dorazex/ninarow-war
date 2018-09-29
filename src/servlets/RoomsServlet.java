@@ -20,16 +20,6 @@ import java.util.Objects;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class RoomsServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
     private final Gson gson = new Gson();
     private RoomsManager roomsManager;
 
@@ -68,7 +58,6 @@ public class RoomsServlet extends HttpServlet {
         }
      }
 
-    //region handlers
 
 
     private void handleLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -108,7 +97,7 @@ public class RoomsServlet extends HttpServlet {
         }
         else {
             //user doesn't exist so register them
-            if (game.addPlayer(username, PlayerManager.PlayerType.valueOf(request.getParameter("playerType")))) {
+            if (game.addPlayer(username, PlayerInfo.PlayerType.valueOf(request.getParameter("playerType")))) {
                 // room isn't full
                 result.put("redirect", "boardPage.html");
                 Cookie roomIdCookie = new Cookie("roomid", Integer.toString(roomid));
@@ -128,8 +117,6 @@ public class RoomsServlet extends HttpServlet {
     }
 
     private void handleRoomList(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-        Cookie[] x = request.getCookies();
         PrintWriter out = response.getWriter();
         if(roomsManager == null){
             roomsManager = ServletUtils.getRoomsManager(getServletContext());
@@ -181,8 +168,6 @@ public class RoomsServlet extends HttpServlet {
         }
     }
 
-    //endregion
-
     private Game getGame(HttpServletRequest request){ //TODO fix this duplication
 
         int roomId = Integer.parseInt(request.getParameter("roomid"));
@@ -193,40 +178,18 @@ public class RoomsServlet extends HttpServlet {
     }
 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processGetRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processPostRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -89,8 +89,8 @@ public class Game {
         this.autoPlayInProgress = autoPlayInProgress;
     }
 
-    public Player getPlayer(String organizer) {
-        return this.players.get(this.getPlayerIndexOfUser(organizer));
+    public Player getPlayer(String userName) {
+        return this.players.get(this.getPlayerIndexOfUser(userName));
     }
 
     private void removePlayerFromList(String username) {
@@ -102,14 +102,14 @@ public class Game {
         this.players.remove(indexOfUserName);
     }
 
-    public synchronized boolean addPlayer(String organizer, PlayerInfo.PlayerType playerType) {
+    public synchronized boolean addPlayer(String userName, PlayerInfo.PlayerType playerType) {
         if (this.registrationBlocked) return false;
 
         PlayerCommon player;
         if (playerType == PlayerInfo.PlayerType.Computer){
-            player = new PlayerComputer(this.players.size(), organizer, this.colorsList.pop());
+            player = new PlayerComputer(this.players.size(), userName, this.colorsList.pop());
         } else{
-            player = new PlayerWeb(this.players.size(), organizer, this.colorsList.pop());
+            player = new PlayerWeb(this.players.size(), userName, this.colorsList.pop());
         }
 
         if(roomInfo.getOnlinePlayers() < roomInfo.getTotalPlayers() && !isStarted){
@@ -130,8 +130,8 @@ public class Game {
         return false;
     }
 
-    public synchronized boolean removePlayer(String organizer) {
-        Player player = this.getPlayer(organizer);
+    public synchronized boolean removePlayer(String userName) {
+        Player player = this.getPlayer(userName);
         players.remove(player);
         board.removePlayer(player.getId());
         roomInfo.decreaseOnlinePlayers();
@@ -312,12 +312,12 @@ public class Game {
         this.roomInfo.setRows(this.board.getRows());
 
         this.colorsList = new Stack<>();
-        this.colorsList.push("#82b74b");
-        this.colorsList.push("#034f84");
-        this.colorsList.push("#6b5b95");
-        this.colorsList.push("#feb236");
-        this.colorsList.push("#d64161");
         this.colorsList.push("#ff7b25");
+        this.colorsList.push("#d64161");
+        this.colorsList.push("#feb236");
+        this.colorsList.push("#6b5b95");
+        this.colorsList.push("#034f84");
+        this.colorsList.push("#82b74b");
 
     }
 

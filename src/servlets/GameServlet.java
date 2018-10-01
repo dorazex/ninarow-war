@@ -89,10 +89,10 @@ public class GameServlet extends HttpServlet {
         Game game = getGame(request);
 
         Integer column = Integer.parseInt(request.getParameter("column"));
-        String organizer = request.getParameter("organizer");
+        String userName = request.getParameter("organizer");
         String isPopout = request.getParameter("isPopOut");
 
-        Player player = game.getPlayer(organizer);
+        Player player = game.getPlayer(userName);
 
         TurnRecord turnRecord;
         if (isPopout.equals("true")){
@@ -125,9 +125,9 @@ public class GameServlet extends HttpServlet {
     private void handleComputerTurn(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Game game = getGame(request);
 
-        String organizer = request.getParameter("organizer");
+        String userName = request.getParameter("organizer");
 
-        Player player = game.getPlayer(organizer);
+        Player player = game.getPlayer(userName);
         if (!player.getName().equals(game.getCurrentPlayer().getName())){
             if(request.getParameter("playerType").equals("Computer")){
                 return;

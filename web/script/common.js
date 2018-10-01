@@ -8,10 +8,10 @@ const colors = ["#bebebe", "#82b74b", "#034f84", "#6b5b95", "#feb236", "#d64161"
 
 function createPlayerIcon(usertype){
     if(usertype == "Human"){
-        return '<img src="images/person.png" class="img" alt="Human" width="30" height="30" style="box-shadow: none;">';
+        return '<img src="images/baby.png" class="img" alt="Human" width="30" height="30" style="box-shadow: none;">';
     }
     else if(usertype == "Computer"){
-        return '<img src="images/robot.png" class="img" alt="Computer" width="30" height="30" style="box-shadow: none;">';
+        return '<img src="images/comp.png" class="img" alt="Computer" width="30" height="30" style="box-shadow: none;">';
     }
 }
 

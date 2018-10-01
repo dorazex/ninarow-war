@@ -14,6 +14,11 @@
         });
     }
 
+    function convertIsStartedToDisplayString(isStarted){
+        if (isStarted == true) return "Running";
+        return "Waiting";
+    }
+
     function refreshRoomsList(rooms) {
         var selected = $("#roomslist").find("tr.info").attr('id');
         //clear all current rooms
@@ -27,7 +32,7 @@
                 '<td>' + element.rows + "X" + element.columns + '</td>' +
                 '<td>' + element.target + '</td>' +
                 '<td>' + element.variant + '</td>' +
-                '<td>' + element.isStarted + '</td>' +
+                '<td>' + convertIsStartedToDisplayString(element.isStarted) + '</td>' +
                 '</tr>').appendTo($("#roomslist"));
 
             if (element.roomIdentifier == selected) {

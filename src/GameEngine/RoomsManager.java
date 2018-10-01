@@ -49,8 +49,8 @@ public class RoomsManager implements ServletContextListener {
         onlinePlayers.add(new SimplePlayer(name, playerType));
     }
 
-    public void removePlayer(String organizer) {
-        onlinePlayers.removeIf(simplePlayer -> Objects.equals(simplePlayer.getName(), organizer));
+    public void removePlayer(String userName) {
+        onlinePlayers.removeIf(simplePlayer -> Objects.equals(simplePlayer.getName(), userName));
     }
 
     @Override

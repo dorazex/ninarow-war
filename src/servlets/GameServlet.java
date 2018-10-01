@@ -28,7 +28,7 @@ public class GameServlet extends HttpServlet {
         String requestType = request.getParameter("requestType");
 
         switch (requestType) {
-            case Constants.GAMEDETAILS:
+            case Constants.GAME_DETAILS:
                 handleGameDetails(request, response);
                 break;
             case Constants.BOARD:
@@ -114,7 +114,7 @@ public class GameServlet extends HttpServlet {
         Boolean isGameOver = game.finalizeTurn();
 
         Board board = game.getBoard();
-        SimpleBoard responseBoard = new SimpleBoard(board.getCells(), board.getPlayersDiscTypeMap(), game.getVariant().equals("Popout"));
+        BoardInfo responseBoard = new BoardInfo(board.getCells(), board.getPlayersDiscTypeMap(), game.getVariant().equals("Popout"));
 
         String boardJson = gson.toJson(responseBoard);
         PrintWriter out = response.getWriter();
@@ -143,7 +143,7 @@ public class GameServlet extends HttpServlet {
         game.getHistory().pushTurn(turnRecord);
         Boolean isGameOver = game.finalizeTurn();
 
-        SimpleBoard responseBoard = new SimpleBoard(board.getCells(), board.getPlayersDiscTypeMap(), game.getVariant().equals("Popout"));
+        BoardInfo responseBoard = new BoardInfo(board.getCells(), board.getPlayersDiscTypeMap(), game.getVariant().equals("Popout"));
         String boardJson = gson.toJson(responseBoard);
 
         PrintWriter out = response.getWriter();
@@ -175,7 +175,7 @@ public class GameServlet extends HttpServlet {
 
         board = game.getBoard();
 
-        SimpleBoard responseBoard = new SimpleBoard(board.getCells(), board.getPlayersDiscTypeMap(), game.getVariant().equals("Popout"));
+        BoardInfo responseBoard = new BoardInfo(board.getCells(), board.getPlayersDiscTypeMap(), game.getVariant().equals("Popout"));
 
         String boardJson = gson.toJson(responseBoard);
         PrintWriter out = response.getWriter();
@@ -204,8 +204,8 @@ public class GameServlet extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "GameServlet";
+    }
 }
 
 

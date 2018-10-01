@@ -11,26 +11,26 @@ import java.util.concurrent.Executors;
 public class RoomsManager implements ServletContextListener {
 
     private final Map<Integer, Game> games = new HashMap<>();
-    private final List<SimplePlayer> onlinePlayers = new ArrayList<>();
+    private final List<PlayerInfo> onlinePlayers = new ArrayList<>();
     private final List<RoomInfo> roomList = new LinkedList<>();
     private int count = 0;
     private ExecutorService computerMoveExecutor = Executors.newSingleThreadExecutor();
 
-    public List<SimplePlayer> getPlayerList() { return onlinePlayers;}
+    public List<PlayerInfo> getPlayerList() { return onlinePlayers;}
     public List<RoomInfo> getRoomList() {
         return roomList;
     }
     public Map<Integer, Game> getGames() {return games;}
 
     public boolean isPlayerExists(String name) {
-        for (SimplePlayer player : onlinePlayers) {
+        for (PlayerInfo player : onlinePlayers) {
             if(player.getName().equals(name))
                 return true;
         }
         return false;
     }
     public boolean isPlayerExists(String name, PlayerInfo.PlayerType type) {
-        for (SimplePlayer player : onlinePlayers) {
+        for (PlayerInfo player : onlinePlayers) {
             if(player.getName().equals(name) && player.getPlayerType() == type)
                 return true;
         }
@@ -46,7 +46,7 @@ public class RoomsManager implements ServletContextListener {
     }
 
     public void addPlayer(String name, PlayerInfo.PlayerType playerType) {
-        onlinePlayers.add(new SimplePlayer(name, playerType));
+        onlinePlayers.add(new PlayerInfo(name, playerType));
     }
 
     public void removePlayer(String userName) {
@@ -61,6 +61,6 @@ public class RoomsManager implements ServletContextListener {
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         computerMoveExecutor.shutdown();
-        computerMoveExecutor.shutdownNow(); //clean up for the executor service when server is shutting down
+        computerMoveExecutor.shutdownNow();
     }
 }

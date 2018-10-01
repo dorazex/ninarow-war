@@ -3,7 +3,7 @@ package GameEngine;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SimpleBoard {
+public class BoardInfo {
 
     private ArrayList<ArrayList<Integer>> cells;
     private Integer rowsCount;
@@ -13,7 +13,7 @@ public class SimpleBoard {
     private Boolean isPopOut;
 
 
-    public SimpleBoard(ArrayList<ArrayList<Integer>> cells, HashMap<Integer, String> playersDiscTypeMap, Boolean isPopOut) {
+    public BoardInfo(ArrayList<ArrayList<Integer>> cells, HashMap<Integer, String> playersDiscTypeMap, Boolean isPopOut) {
         this.cells = cells;
         this.columnsCount = this.cells.size();
         this.rowsCount = this.cells.get(0).size();

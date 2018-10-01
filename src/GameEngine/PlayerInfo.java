@@ -22,6 +22,12 @@ public class PlayerInfo {
         this.turnsCount = turnsCount;
     }
 
+    public PlayerInfo(String name, PlayerType playerType) {
+        this.name = name;
+        this.playerType = playerType;
+        this.discType = "red";
+    }
+
     int getTurnsCount() { return turnsCount;}
     public final String getName() {
         return  name;

@@ -192,6 +192,6 @@ public class RoomsServlet extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "RoomsServlet";
+    }
 }

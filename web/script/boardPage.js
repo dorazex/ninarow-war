@@ -45,7 +45,11 @@
                 var td = $(document.getElementById("board").rows[row].getElementsByTagName("td")[col]);
                 td.removeClass();
                 td.addClass("waves-effect waves-light toggler");
-                td[0].innerText = "\n\n";
+                if(rowsCount < 14) {
+                    td[0].innerText = "\n\n";
+                } else {
+                    td[0].innerText = "\n";
+                }
                 td[0].style.background = colors[parseInt(cells[col][row - 1])];
             }
         }

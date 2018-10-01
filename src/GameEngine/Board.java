@@ -209,10 +209,6 @@ public class Board {
         this.cells = newCells;
     }
 
-//    private Integer idToDigit(String playerId){
-//
-//    }
-
     public TurnRecord putDisc(Player player, int column){
         TurnRecord turnRecord = null;
         if (this.canInsert(column)){

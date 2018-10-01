@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
         String usernameFromSession = SessionUtils.getUsernameFromSession(request);
         roomsManager = ServletUtils.getRoomsManager(getServletContext());
 
-        PlayerInfo.PlayerType playerTypeFromParameter = PlayerInfo.PlayerType.valueOf(request.getParameter(Constants.USERTYPE));
+        PlayerInfo.PlayerType playerTypeFromParameter = PlayerInfo.PlayerType.valueOf(request.getParameter(Constants.PLAYER_TYPE));
 
         if (usernameFromSession == null) {
             String usernameFromParameter = request.getParameter(Constants.USERNAME);
@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 
     private void handleLoginAttributes(HttpServletRequest request, HttpServletResponse response, PlayerInfo.PlayerType playerTypeFromParameter, String usernameFromParameter) throws IOException {
         //add the new user to the users list
-        String playerType = request.getParameter(Constants.USERTYPE);
+        String playerType = request.getParameter(Constants.PLAYER_TYPE);
         request.getSession(true).setAttribute(Constants.USERNAME, usernameFromParameter);
         Cookie organizerCookie = new Cookie("organizer", usernameFromParameter);
         organizerCookie.setPath("/");
@@ -98,6 +98,6 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "LoginServlet";
+    }
 }

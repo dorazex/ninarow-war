@@ -1,0 +1,14 @@
+
+.modal-header-board {
+  padding: 2px 16px;
+  background-color: #33b5e5;
+  color: white;
+}
+
+.modal-header-error {
+  padding: 2px 16px;
+  background-color: #ff4444;
+  color: white;
+}
+
+

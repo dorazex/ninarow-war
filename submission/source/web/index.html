@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ninarow login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <!--<link rel="stylesheet" href="css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!--https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="css/mdb.min.css">-->
+    <link rel="stylesheet" href="css/common-style.css">
+    <link rel="stylesheet" href="css/login-style.css">
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">-->
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'>
+</head>
+
+<body style="display:none; min-width: 960px; width: 95%;">
+<!-- LOGIN FORM -->
+<div id="wrap">
+<div align="center" class="text-center container" id="main" style="padding:50px 0;">
+    <div class="logo">Ninarow Login</div>
+    <!-- Main Form -->
+    <div class="login-form-1">
+        <form method="GET" action="login">
+            <div class="main-login-form">
+                <div class="login-group">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="username">
+                    </div>
+                    <div class="form-group">
+                        <select name="playertype" class="form-control" style="width:100%; max-width:100%;">
+                            <option value="Human">Human</option>
+                            <option value="Computer">Computer</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" value="Login" class="login-button"><i class="fa fa-chevron-right"
+                                                                            aria-hidden="true"></i></button>
+            </div>
+        </form>
+    </div>
+    <!-- end:Main Form -->
+</div>
+</div>
+<script src="script/jquery-3.1.1.min.js"></script>
+<script src="script/js.cookie.js"></script>
+<script>
+    if (Cookies.get("organizer")) {
+        $.ajax({
+            data: {
+                "username": Cookies.get("organizer"),
+                "playertype": Cookies.get("playerType"),
+            },
+            url: "login",
+            success: function (response) {
+                document.open();
+                document.write(response);
+                document.close();
+            }
+        });
+    }
+    else {
+        $("body").show();
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

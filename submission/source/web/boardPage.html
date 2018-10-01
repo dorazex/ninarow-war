@@ -1,0 +1,100 @@
+<html>
+<head>
+    <title>Ninarow</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css">
+    <link rel="stylesheet" href="css/common-style.css">
+    <link rel="stylesheet" href="css/board-style.css">
+    <link rel="stylesheet" href="css/boardPage.css">
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+<!--Navbar-->
+<nav class="navbar elegant-color">
+    <div class="container">
+        <div class="navbar-header">
+            <!--Navbar Brand-->
+            <a class="navbar-brand" href="#"><p><strong>Ninarow</strong></p></a>
+        </div>
+        <!--Links-->
+        <div>
+            <ul class="nav navbar-nav navbar-right pull-right">
+                <li class="active">
+                    <a href="#" id="leaveRoom" class="pull-right navbar-nav">Leave room</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--Navbar-->
+<div id="wrap">
+    <div class="container " id="main">
+        <div class="row">
+            <div class="container">
+                <div class="row" id="playerDetails">
+                    <div class="col-xs-9">
+                        <table class="table table-no-border">
+                            <tbody>
+                            <tr>
+                                <td id="username">Username:</td>
+                                <td id="currPlayer">Current Player:</td>
+                                <td id="roomid">Room ID:</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-9" id="boardArea">
+                        <table id="board"></table>
+                    </div>
+                    <div class="col-xs-3" id="sidePanel">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3 class="text-center">Players</h3>
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Type</th>
+                                        <th>Name</th>
+                                        <th>Turns</th>
+                                        <th>Disc</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="userslist"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- The Modal -->
+<div class="modal fade" id="messageModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="modalTitle">Ninarow</h4>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">stub_message</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- The Modal end-->
+<script src="script/jquery-3.1.1.min.js"></script>
+<script src="script/bootstrap.min.js"></script>
+<script src="script/mdb.min.js"></script>
+<script src="script/js.cookie.js"></script>
+<script src="script/common.js"></script>
+<script src="script/boardPage.js"></script>
+</body>
+</html>
